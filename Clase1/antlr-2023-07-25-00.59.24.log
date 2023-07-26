@@ -1,0 +1,37 @@
+2023-07-25 00:59:23:388 grammar LogManager.java:25 before: (COMBINED_GRAMMAR Calc (RULES (RULE prog (BLOCK (ALT (* (BLOCK (ALT expr NEWLINE)))))) (RULE expr (BLOCK (ALT expr (BLOCK (ALT '*') (ALT '/')) expr) (ALT expr (BLOCK (ALT '+') (ALT '-')) expr) (ALT INT) (ALT '(' expr ')'))) (RULE NEWLINE (BLOCK (ALT (+ (BLOCK (ALT [\r\n])))))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9]))))))))
+2023-07-25 00:59:23:396 grammar LogManager.java:25 after: (COMBINED_GRAMMAR Calc (RULES (RULE prog (BLOCK (ALT (* (BLOCK (ALT expr NEWLINE)))))) (RULE expr (BLOCK (ALT expr (SET '*' '/') expr) (ALT expr (SET '+' '-') expr) (ALT INT) (ALT '(' expr ')'))) (RULE NEWLINE (BLOCK (ALT (+ (BLOCK (ALT [\r\n])))))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9]))))))))
+2023-07-25 00:59:23:413 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR Calc (RULES (RULE prog (BLOCK (ALT (* (BLOCK (ALT expr NEWLINE)))))) (RULE expr (BLOCK (ALT expr (SET '*' '/') expr) (ALT expr (SET '+' '-') expr) (ALT INT) (ALT '(' expr ')')))))
+2023-07-25 00:59:23:413 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR CalcLexer (RULES (RULE T__0 (BLOCK (ALT '*'))) (RULE T__1 (BLOCK (ALT '/'))) (RULE T__2 (BLOCK (ALT '+'))) (RULE T__3 (BLOCK (ALT '-'))) (RULE T__4 (BLOCK (ALT '('))) (RULE T__5 (BLOCK (ALT ')'))) (RULE NEWLINE (BLOCK (ALT (+ (BLOCK (ALT [\r\n])))))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9]))))))))
+2023-07-25 00:59:24:428 left-recursion LogManager.java:25 expr
+    :   ( {} INT<tokenIndex=44> 
+        | '('<tokenIndex=48> expr<tokenIndex=50> ')'<tokenIndex=52> 
+        )
+        (
+          {p.Precpred(p.GetParserRuleContext(), 4)}?<p=4> ('*'<tokenIndex=23>|'/'<tokenIndex=25>) expr<tokenIndex=28,p=5>
+                  | {p.Precpred(p.GetParserRuleContext(), 3)}?<p=3> ('+'<tokenIndex=35>|'-'<tokenIndex=37>) expr<tokenIndex=40,p=4>
+        )*
+    ;
+2023-07-25 00:59:24:439 grammar LogManager.java:25 added: (RULE expr (BLOCK (ALT (BLOCK (ALT {} (INT (ELEMENT_OPTIONS (= tokenIndex 44)))) (ALT ('(' (ELEMENT_OPTIONS (= tokenIndex 48))) (expr (ELEMENT_OPTIONS (= tokenIndex 50))) (')' (ELEMENT_OPTIONS (= tokenIndex 52))))) (* (BLOCK (ALT ({p.Precpred(p.GetParserRuleContext(), 4)}? (ELEMENT_OPTIONS (= p 4))) (SET ('*' (ELEMENT_OPTIONS (= tokenIndex 23))) ('/' (ELEMENT_OPTIONS (= tokenIndex 25)))) (expr (ELEMENT_OPTIONS (= tokenIndex 28) (= p 5)))) (ALT ({p.Precpred(p.GetParserRuleContext(), 3)}? (ELEMENT_OPTIONS (= p 3))) (SET ('+' (ELEMENT_OPTIONS (= tokenIndex 35))) ('-' (ELEMENT_OPTIONS (= tokenIndex 37)))) (expr (ELEMENT_OPTIONS (= tokenIndex 40) (= p 4)))))))))
+2023-07-25 00:59:24:440 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, NEWLINE=7, INT=8}
+2023-07-25 00:59:24:440 semantics LogManager.java:25 strings={'*'=1, '/'=2, '+'=3, '-'=4, '('=5, ')'=6}
+2023-07-25 00:59:24:448 LL1 LogManager.java:25 
+DECISION 0 in rule prog
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 look=[{5, 8}, <EOF>]
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 LL(1)? true
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 
+DECISION 1 in rule expr
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 look=[8, 5]
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 LL(1)? true
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 
+DECISION 2 in rule expr
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 look=[null, null]
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 LL(1)? false
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 
+DECISION 3 in rule expr
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 look=[null, null]
+2023-07-25 00:59:24:449 LL1 LogManager.java:25 LL(1)? false
+2023-07-25 00:59:24:514 action-translator LogManager.java:25 translate 
+2023-07-25 00:59:24:516 action-translator LogManager.java:25 translate p.Precpred(p.GetParserRuleContext(), 4)
+2023-07-25 00:59:24:517 action-translator LogManager.java:25 translate p.Precpred(p.GetParserRuleContext(), 3)
+2023-07-25 00:59:24:518 action-translator LogManager.java:25 translate p.Precpred(p.GetParserRuleContext(), 4)
+2023-07-25 00:59:24:518 action-translator LogManager.java:25 translate p.Precpred(p.GetParserRuleContext(), 3)
