@@ -1,61 +1,18 @@
-// Code generated from Calc.g4 by ANTLR 4.7.2. DO NOT EDIT.
+// Code generated from Calc.g4 by ANTLR 4.13.0. DO NOT EDIT.
 
 package parser
 
 import (
 	"fmt"
+	"github.com/antlr4-go/antlr/v4"
+	"sync"
 	"unicode"
-
-	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
 // Suppress unused import error
 var _ = fmt.Printf
+var _ = sync.Once{}
 var _ = unicode.IsLetter
-
-var serializedLexerAtn = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 2, 10, 41, 8,
-	1, 4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9,
-	7, 4, 8, 9, 8, 4, 9, 9, 9, 3, 2, 3, 2, 3, 3, 3, 3, 3, 4, 3, 4, 3, 5, 3,
-	5, 3, 6, 3, 6, 3, 7, 3, 7, 3, 8, 6, 8, 33, 10, 8, 13, 8, 14, 8, 34, 3,
-	9, 6, 9, 38, 10, 9, 13, 9, 14, 9, 39, 2, 2, 10, 3, 3, 5, 4, 7, 5, 9, 6,
-	11, 7, 13, 8, 15, 9, 17, 10, 3, 2, 4, 4, 2, 12, 12, 15, 15, 3, 2, 50, 59,
-	2, 42, 2, 3, 3, 2, 2, 2, 2, 5, 3, 2, 2, 2, 2, 7, 3, 2, 2, 2, 2, 9, 3, 2,
-	2, 2, 2, 11, 3, 2, 2, 2, 2, 13, 3, 2, 2, 2, 2, 15, 3, 2, 2, 2, 2, 17, 3,
-	2, 2, 2, 3, 19, 3, 2, 2, 2, 5, 21, 3, 2, 2, 2, 7, 23, 3, 2, 2, 2, 9, 25,
-	3, 2, 2, 2, 11, 27, 3, 2, 2, 2, 13, 29, 3, 2, 2, 2, 15, 32, 3, 2, 2, 2,
-	17, 37, 3, 2, 2, 2, 19, 20, 7, 44, 2, 2, 20, 4, 3, 2, 2, 2, 21, 22, 7,
-	49, 2, 2, 22, 6, 3, 2, 2, 2, 23, 24, 7, 45, 2, 2, 24, 8, 3, 2, 2, 2, 25,
-	26, 7, 47, 2, 2, 26, 10, 3, 2, 2, 2, 27, 28, 7, 42, 2, 2, 28, 12, 3, 2,
-	2, 2, 29, 30, 7, 43, 2, 2, 30, 14, 3, 2, 2, 2, 31, 33, 9, 2, 2, 2, 32,
-	31, 3, 2, 2, 2, 33, 34, 3, 2, 2, 2, 34, 32, 3, 2, 2, 2, 34, 35, 3, 2, 2,
-	2, 35, 16, 3, 2, 2, 2, 36, 38, 9, 3, 2, 2, 37, 36, 3, 2, 2, 2, 38, 39,
-	3, 2, 2, 2, 39, 37, 3, 2, 2, 2, 39, 40, 3, 2, 2, 2, 40, 18, 3, 2, 2, 2,
-	5, 2, 34, 39, 2,
-}
-
-var lexerDeserializer = antlr.NewATNDeserializer(nil)
-var lexerAtn = lexerDeserializer.DeserializeFromUInt16(serializedLexerAtn)
-
-var lexerChannelNames = []string{
-	"DEFAULT_TOKEN_CHANNEL", "HIDDEN",
-}
-
-var lexerModeNames = []string{
-	"DEFAULT_MODE",
-}
-
-var lexerLiteralNames = []string{
-	"", "'*'", "'/'", "'+'", "'-'", "'('", "')'",
-}
-
-var lexerSymbolicNames = []string{
-	"", "", "", "", "", "", "", "NEWLINE", "INT",
-}
-
-var lexerRuleNames = []string{
-	"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "NEWLINE", "INT",
-}
 
 type CalcLexer struct {
 	*antlr.BaseLexer
@@ -64,26 +21,87 @@ type CalcLexer struct {
 	// TODO: EOF string
 }
 
-var lexerDecisionToDFA = make([]*antlr.DFA, len(lexerAtn.DecisionToState))
+var CalcLexerLexerStaticData struct {
+	once                   sync.Once
+	serializedATN          []int32
+	ChannelNames           []string
+	ModeNames              []string
+	LiteralNames           []string
+	SymbolicNames          []string
+	RuleNames              []string
+	PredictionContextCache *antlr.PredictionContextCache
+	atn                    *antlr.ATN
+	decisionToDFA          []*antlr.DFA
+}
 
-func init() {
-	for index, ds := range lexerAtn.DecisionToState {
-		lexerDecisionToDFA[index] = antlr.NewDFA(ds, index)
+func calclexerLexerInit() {
+	staticData := &CalcLexerLexerStaticData
+	staticData.ChannelNames = []string{
+		"DEFAULT_TOKEN_CHANNEL", "HIDDEN",
+	}
+	staticData.ModeNames = []string{
+		"DEFAULT_MODE",
+	}
+	staticData.LiteralNames = []string{
+		"", "'*'", "'/'", "'+'", "'-'", "'('", "')'",
+	}
+	staticData.SymbolicNames = []string{
+		"", "", "", "", "", "", "", "NEWLINE", "INT",
+	}
+	staticData.RuleNames = []string{
+		"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "NEWLINE", "INT",
+	}
+	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
+	staticData.serializedATN = []int32{
+		4, 0, 8, 39, 6, -1, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2,
+		4, 7, 4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 1, 0, 1, 0, 1, 1, 1, 1, 1,
+		2, 1, 2, 1, 3, 1, 3, 1, 4, 1, 4, 1, 5, 1, 5, 1, 6, 4, 6, 31, 8, 6, 11,
+		6, 12, 6, 32, 1, 7, 4, 7, 36, 8, 7, 11, 7, 12, 7, 37, 0, 0, 8, 1, 1, 3,
+		2, 5, 3, 7, 4, 9, 5, 11, 6, 13, 7, 15, 8, 1, 0, 2, 2, 0, 10, 10, 13, 13,
+		1, 0, 48, 57, 40, 0, 1, 1, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 5, 1, 0, 0, 0,
+		0, 7, 1, 0, 0, 0, 0, 9, 1, 0, 0, 0, 0, 11, 1, 0, 0, 0, 0, 13, 1, 0, 0,
+		0, 0, 15, 1, 0, 0, 0, 1, 17, 1, 0, 0, 0, 3, 19, 1, 0, 0, 0, 5, 21, 1, 0,
+		0, 0, 7, 23, 1, 0, 0, 0, 9, 25, 1, 0, 0, 0, 11, 27, 1, 0, 0, 0, 13, 30,
+		1, 0, 0, 0, 15, 35, 1, 0, 0, 0, 17, 18, 5, 42, 0, 0, 18, 2, 1, 0, 0, 0,
+		19, 20, 5, 47, 0, 0, 20, 4, 1, 0, 0, 0, 21, 22, 5, 43, 0, 0, 22, 6, 1,
+		0, 0, 0, 23, 24, 5, 45, 0, 0, 24, 8, 1, 0, 0, 0, 25, 26, 5, 40, 0, 0, 26,
+		10, 1, 0, 0, 0, 27, 28, 5, 41, 0, 0, 28, 12, 1, 0, 0, 0, 29, 31, 7, 0,
+		0, 0, 30, 29, 1, 0, 0, 0, 31, 32, 1, 0, 0, 0, 32, 30, 1, 0, 0, 0, 32, 33,
+		1, 0, 0, 0, 33, 14, 1, 0, 0, 0, 34, 36, 7, 1, 0, 0, 35, 34, 1, 0, 0, 0,
+		36, 37, 1, 0, 0, 0, 37, 35, 1, 0, 0, 0, 37, 38, 1, 0, 0, 0, 38, 16, 1,
+		0, 0, 0, 3, 0, 32, 37, 0,
+	}
+	deserializer := antlr.NewATNDeserializer(nil)
+	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
+	atn := staticData.atn
+	staticData.decisionToDFA = make([]*antlr.DFA, len(atn.DecisionToState))
+	decisionToDFA := staticData.decisionToDFA
+	for index, state := range atn.DecisionToState {
+		decisionToDFA[index] = antlr.NewDFA(state, index)
 	}
 }
 
+// CalcLexerInit initializes any static state used to implement CalcLexer. By default the
+// static state used to implement the lexer is lazily initialized during the first call to
+// NewCalcLexer(). You can call this function if you wish to initialize the static state ahead
+// of time.
+func CalcLexerInit() {
+	staticData := &CalcLexerLexerStaticData
+	staticData.once.Do(calclexerLexerInit)
+}
+
+// NewCalcLexer produces a new lexer instance for the optional input antlr.CharStream.
 func NewCalcLexer(input antlr.CharStream) *CalcLexer {
-
+	CalcLexerInit()
 	l := new(CalcLexer)
-
 	l.BaseLexer = antlr.NewBaseLexer(input)
-	l.Interpreter = antlr.NewLexerATNSimulator(l, lexerAtn, lexerDecisionToDFA, antlr.NewPredictionContextCache())
-
-	l.channelNames = lexerChannelNames
-	l.modeNames = lexerModeNames
-	l.RuleNames = lexerRuleNames
-	l.LiteralNames = lexerLiteralNames
-	l.SymbolicNames = lexerSymbolicNames
+	staticData := &CalcLexerLexerStaticData
+	l.Interpreter = antlr.NewLexerATNSimulator(l, staticData.atn, staticData.decisionToDFA, staticData.PredictionContextCache)
+	l.channelNames = staticData.ChannelNames
+	l.modeNames = staticData.ModeNames
+	l.RuleNames = staticData.RuleNames
+	l.LiteralNames = staticData.LiteralNames
+	l.SymbolicNames = staticData.SymbolicNames
 	l.GrammarFileName = "Calc.g4"
 	// TODO: l.EOF = antlr.TokenEOF
 

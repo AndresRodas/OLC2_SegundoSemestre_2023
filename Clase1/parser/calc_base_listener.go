@@ -1,8 +1,8 @@
-// Code generated from Calc.g4 by ANTLR 4.7.2. DO NOT EDIT.
+// Code generated from Calc.g4 by ANTLR 4.13.0. DO NOT EDIT.
 
 package parser // Calc
 
-import "github.com/antlr/antlr4/runtime/Go/antlr"
+import "github.com/antlr4-go/antlr/v4"
 
 // BaseCalcListener is a complete listener for a parse tree produced by CalcParser.
 type BaseCalcListener struct{}
