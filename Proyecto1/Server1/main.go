@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
+	"github.com/gofiber/fiber/v2"
 )
 
 type Visitor struct {
@@ -23,15 +24,15 @@ func NewVisitor() Parser.SwiftGrammarVisitor {
 }
 
 func (l *Visitor) VisitS(ctx *Parser.SContext) interface{} {
-	// return ctx.A().Accept(l)
 	return l.Visit(ctx.Block())
 }
 
 func (l *Visitor) VisitBlock(ctx *Parser.BlockContext) interface{} {
+	out := ""
 	for i := 0; ctx.Stmt(i) != nil; i++ {
-		l.Visit(ctx.Stmt(i))
+		out += strconv.FormatInt(l.Visit(ctx.Stmt(i)).(int64), 10) + " "
 	}
-	return true
+	return out
 }
 
 func (l *Visitor) VisitStmt(ctx *Parser.StmtContext) interface{} {
@@ -42,12 +43,13 @@ func (l *Visitor) VisitStmt(ctx *Parser.StmtContext) interface{} {
 		// return l.Visit(ctx.Ifstmt())
 		return "If Execute!"
 	}
-	return true
+	return nil
 }
 
 func (l *Visitor) VisitPrintstmt(ctx *Parser.PrintstmtContext) interface{} {
-	fmt.Println(l.Visit(ctx.Expr()))
-	return true
+	returnValue := l.Visit(ctx.Expr())
+	fmt.Println(returnValue)
+	return returnValue
 }
 
 func (l *Visitor) VisitIfstmt(ctx *Parser.IfstmtContext) interface{} {
@@ -124,10 +126,23 @@ func (l *Visitor) Visit(tree antlr.ParseTree) interface{} {
 	}
 }
 
-func main() {
-	fmt.Println("hola mundo")
-	code := "print((5+6+9+7-23)*4)"
+type Resp struct {
+	Output  string
+	Flag    bool
+	Message string
+}
 
+type Message struct {
+	Content string `json:"content"`
+}
+
+func handleVisitor(c *fiber.Ctx) error {
+
+	var message Message
+	if err := c.BodyParser(&message); err != nil {
+		return err
+	}
+	code := message.Content
 	input := antlr.NewInputStream(code)
 	lexer := Parser.NewSwiftLexer(input)
 	tokens := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
@@ -135,6 +150,22 @@ func main() {
 	p.BuildParseTrees = true
 	visitor := NewVisitor()
 	tree := p.S()
-	visitor.Visit(tree)
+	out := visitor.Visit(tree)
+	fmt.Println(out)
+	fmt.Println(code)
+	response := Resp{
+		Output:  out.(string),
+		Flag:    true,
+		Message: "<3 Ejecución realizada con éxito <3",
+	}
+	return c.Status(fiber.StatusOK).JSON(response)
+}
+
+func main() {
+	fmt.Println("OLC2 ;)")
+
+	app := fiber.New()
+	app.Post("/Visitor", handleVisitor)
+	app.Listen(":3001")
 
 }
