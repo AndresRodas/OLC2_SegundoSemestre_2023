@@ -1,0 +1,11 @@
+PASOS PARA LEVANTAR EL AMBIENTE
+1- Instalar Go
+2- Descargar archivos de UEDI
+3- Copiar archivos necesarios
+4- Definir variables de entorno
+5- Crear Lexer
+6- Crear Gramática
+7- Hacer go mod init Server1
+8- go get github.com/antlr4-go/antlr/v4
+9- antlr4 -Dlanguage=Go -o parser -package parser -visitor *.g4
+10- go get github.com/gofiber/fiber/v2
