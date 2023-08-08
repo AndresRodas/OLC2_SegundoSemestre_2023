@@ -9,6 +9,7 @@ import (
 
 	"github.com/antlr4-go/antlr/v4"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 type Visitor struct {
@@ -48,7 +49,6 @@ func (l *Visitor) VisitStmt(ctx *Parser.StmtContext) interface{} {
 
 func (l *Visitor) VisitPrintstmt(ctx *Parser.PrintstmtContext) interface{} {
 	returnValue := l.Visit(ctx.Expr())
-	fmt.Println(returnValue)
 	return returnValue
 }
 
@@ -151,8 +151,6 @@ func handleVisitor(c *fiber.Ctx) error {
 	visitor := NewVisitor()
 	tree := p.S()
 	out := visitor.Visit(tree)
-	fmt.Println(out)
-	fmt.Println(code)
 	response := Resp{
 		Output:  out.(string),
 		Flag:    true,
@@ -163,8 +161,8 @@ func handleVisitor(c *fiber.Ctx) error {
 
 func main() {
 	fmt.Println("OLC2 ;)")
-
 	app := fiber.New()
+	app.Use(cors.New())
 	app.Post("/Visitor", handleVisitor)
 	app.Listen(":3001")
 

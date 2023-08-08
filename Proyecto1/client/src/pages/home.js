@@ -12,10 +12,10 @@ const Home = () => {
 
     const Compile = async() => {
         const data = {
-            Content: "print((5+6+9+7-23)*4)"
+            Content: codeText
           }
-        const resp = await PostMethod('Visitor', )
-        console.log(resp)
+        const resp = await PostMethod('Visitor', data)
+        await setConsoleText(resp?.Output)
     }
 
     return (
