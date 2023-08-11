@@ -6,8 +6,8 @@
 
 ### 1) Instalación del JDK
 * Primero vamos a descargar el archivo de instalación del **JDK** en el siguiene [enlace de descarga](https://www.oracle.com/java/technologies/downloads/#jdk20-windows).
-
-![](https://hackmd.io/_uploads/SJP6PUXnn.png)
+![](https://i.imgur.com/896JWft.png)
+![](https://hackmd.io/uploads/SJP6PUXnn.png)
 
 * Ejecutar el instalador, y seguir los pasos.
 
