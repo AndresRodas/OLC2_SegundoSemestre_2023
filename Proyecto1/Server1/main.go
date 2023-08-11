@@ -165,5 +165,4 @@ func main() {
 	app.Use(cors.New())
 	app.Post("/Visitor", handleVisitor)
 	app.Listen(":3001")
-
 }

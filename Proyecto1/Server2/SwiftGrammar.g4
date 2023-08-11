@@ -81,29 +81,3 @@ expr returns [interfaces.Expression e]
 | TRU { $e = expressions.NewPrimitive($TRU.line, $TRU.pos, true, environment.BOOLEAN) }
 | FAL { $e = expressions.NewPrimitive($FAL.line, $FAL.pos, false, environment.BOOLEAN) }
 ;
-
-/* primitive [interfaces.Expression p]  
-: NUMBER                             
-    {
-        if (strings.Contains($NUMBER.text,".")){
-            num,err := strconv.ParseFloat($NUMBER.text, 64);
-            if err!= nil{
-                fmt.Println(err)
-            }
-            $p = expressions.NewPrimitive($NUMBER.line,$NUMBER.pos,num,environment.FLOAT)
-        }else{
-            num,err := strconv.Atoi($NUMBER.text)
-            if err!= nil{
-                fmt.Println(err)
-            }
-            $p = expressions.NewPrimitive($NUMBER.line,$NUMBER.pos,num,environment.INTEGER)
-        }
-    }
-| STRING
-    {
-        str := $STRING.text
-        $p = expressions.NewPrimitive($STRING.line, $STRING.pos,str[1:len(str)-1],environment.STR)
-    }                        
-| TRU { $p = expressions.NewPrimitive($TRU.line, $TRU.pos,true,environment.BOOLEAN) }
-| FAL { $p = expressions.NewPrimitive($FAL.line, $FAL.pos,false,environment.BOOLEAN) }
-; */

@@ -14,9 +14,30 @@ type TreeShapeListener struct {
 	Code []interface{}
 }
 
+type Resp struct {
+	Output  string
+	Flag    bool
+	Message string
+}
+
+/* func handleInterpreter(c *fiber.Ctx) error {
+	var message Message
+	if err := c.BodyParser(&message); err != nil {
+		return err
+	}
+
+	response := Resp{
+		Output:  out.(string),
+		Flag:    true,
+		Message: "<3 Ejecución realizada con éxito <3",
+	}
+	return c.Status(fiber.StatusOK).JSON(response)
+} */
+
 func main() {
+
 	//Entrada
-	code := "print(10+5-3+1*10)"
+	code := "print(10+1*1/85)"
 	//Leyendo entrada
 	input := antlr.NewInputStream(code)
 	lexer := parser.NewSwiftLexer(input)
