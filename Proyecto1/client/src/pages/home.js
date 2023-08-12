@@ -2,8 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Button } from 'primereact/button';
-
 import { PostMethod } from '../api/http';
+
+const visitorAPI = process.env.REACT_APP_API_URL_VISITOR;
+const interpreterAPI = process.env.REACT_APP_API_URL_INTERPRETER;
 
 const Home = () => {
 
@@ -11,18 +13,12 @@ const Home = () => {
     const [consoleText, setConsoleText] = useState('')
 
     const CompileVisitor = async() => {
-        const data = {
-            Content: codeText
-          }
-        const resp = await PostMethod('http://127.0.0.1:3002'+'Interpreter', data)
+        const resp = await PostMethod(visitorAPI+'Visitor', { Content: codeText })
         await setConsoleText(resp?.Output)
     }
 
     const CompileInterpreter = async() => {
-        const data = {
-            Content: codeText
-          }
-        const resp = await PostMethod('http://127.0.0.1:3002'+'Interpreter', data)
+        const resp = await PostMethod(interpreterAPI+'Interpreter', { Content: codeText })
         await setConsoleText(resp?.Output)
     }
 
@@ -32,8 +28,10 @@ const Home = () => {
                 <InputTextarea value={codeText} rows={8} cols={40} style={{marginBottom: '5%', marginRight: '2%'}} onChange={e => {setCodeText(e.target.value)}}/>
                 <InputTextarea value={consoleText} rows={8} cols={40} style={{marginBottom: '5%', marginLeft: '2%'}} onChange={e => {setConsoleText(e.target.value)}}/>
             </div>
-            <Button label="RUN" onClick={CompileVisitor} />
-            {/* <Button label="RUN" onClick={CompileInterpreter} /> */}
+            <div style={{display: 'flex'}}>
+                <Button label="RUN VISITOR" onClick={CompileVisitor} style={{marginRight: '2%'}} />
+                <Button label="RUN INTERPRETER" onClick={CompileInterpreter} style={{marginLeft: '2%'}}/>
+            </div>
         </div>
     );
 };

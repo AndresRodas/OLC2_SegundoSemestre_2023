@@ -7,6 +7,8 @@ import (
 	"fmt"
 
 	"github.com/antlr4-go/antlr/v4"
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 type TreeShapeListener struct {
@@ -20,24 +22,17 @@ type Resp struct {
 	Message string
 }
 
-/* func handleInterpreter(c *fiber.Ctx) error {
+type Message struct {
+	Content string `json:"content"`
+}
+
+func handleInterpreter(c *fiber.Ctx) error {
 	var message Message
 	if err := c.BodyParser(&message); err != nil {
 		return err
 	}
-
-	response := Resp{
-		Output:  out.(string),
-		Flag:    true,
-		Message: "<3 Ejecución realizada con éxito <3",
-	}
-	return c.Status(fiber.StatusOK).JSON(response)
-} */
-
-func main() {
-
 	//Entrada
-	code := "print(10+1*1/85)"
+	code := message.Content
 	//Leyendo entrada
 	input := antlr.NewInputStream(code)
 	lexer := parser.NewSwiftLexer(input)
@@ -57,6 +52,21 @@ func main() {
 		inst.(interfaces.Instruction).Ejecutar(&Ast, nil)
 	}
 	fmt.Println(Ast.GetPrint())
+	response := Resp{
+		Output:  Ast.GetPrint(),
+		Flag:    true,
+		Message: "<3 Ejecución realizada con éxito <3",
+	}
+	return c.Status(fiber.StatusOK).JSON(response)
+}
+
+func main() {
+
+	fmt.Println("OLC2 ;)")
+	app := fiber.New()
+	app.Use(cors.New())
+	app.Post("/Interpreter", handleInterpreter)
+	app.Listen(":3002")
 }
 
 func NewTreeShapeListener() *TreeShapeListener {
