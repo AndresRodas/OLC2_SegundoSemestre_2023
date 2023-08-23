@@ -24,5 +24,5 @@ func (a *AST) GetErrors() string {
 }
 
 func (a *AST) SetError(ToErr string) {
-	a.Errors = a.Errors + ToErr
+	a.Errors = a.Errors + ToErr + "\n"
 }

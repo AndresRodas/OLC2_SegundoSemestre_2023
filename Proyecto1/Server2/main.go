@@ -4,7 +4,6 @@ import (
 	"Server2/environment"
 	"Server2/interfaces"
 	"Server2/parser"
-	"fmt"
 
 	"github.com/antlr4-go/antlr/v4"
 	"github.com/gofiber/fiber/v2"
@@ -47,13 +46,20 @@ func handleInterpreter(c *fiber.Ctx) error {
 	Code := listener.Code
 	//create ast
 	var Ast environment.AST
+	//create env
+	var globalEnv environment.Environment = environment.NewEnvironment(nil, "GLOBAL")
 	//ejecución
 	for _, inst := range Code {
-		inst.(interfaces.Instruction).Ejecutar(&Ast, nil)
+		inst.(interfaces.Instruction).Ejecutar(&Ast, globalEnv)
 	}
-	fmt.Println(Ast.GetPrint())
+	var ConsoleOut = ""
+	if Ast.GetErrors() == "" {
+		ConsoleOut = Ast.GetPrint()
+	} else {
+		ConsoleOut = Ast.GetErrors()
+	}
 	response := Resp{
-		Output:  Ast.GetPrint(),
+		Output:  ConsoleOut,
 		Flag:    true,
 		Message: "<3 Ejecución realizada con éxito <3",
 	}
@@ -61,8 +67,6 @@ func handleInterpreter(c *fiber.Ctx) error {
 }
 
 func main() {
-
-	fmt.Println("OLC2 ;)")
 	app := fiber.New()
 	app.Use(cors.New())
 	app.Post("/Interpreter", handleInterpreter)

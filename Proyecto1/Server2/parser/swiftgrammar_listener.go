@@ -22,8 +22,20 @@ type SwiftGrammarListener interface {
 	// EnterIfstmt is called when entering the ifstmt production.
 	EnterIfstmt(c *IfstmtContext)
 
+	// EnterDeclarationstmt is called when entering the declarationstmt production.
+	EnterDeclarationstmt(c *DeclarationstmtContext)
+
+	// EnterTypes is called when entering the types production.
+	EnterTypes(c *TypesContext)
+
 	// EnterExpr is called when entering the expr production.
 	EnterExpr(c *ExprContext)
+
+	// EnterListParams is called when entering the listParams production.
+	EnterListParams(c *ListParamsContext)
+
+	// EnterListArray is called when entering the listArray production.
+	EnterListArray(c *ListArrayContext)
 
 	// ExitS is called when exiting the s production.
 	ExitS(c *SContext)
@@ -40,6 +52,18 @@ type SwiftGrammarListener interface {
 	// ExitIfstmt is called when exiting the ifstmt production.
 	ExitIfstmt(c *IfstmtContext)
 
+	// ExitDeclarationstmt is called when exiting the declarationstmt production.
+	ExitDeclarationstmt(c *DeclarationstmtContext)
+
+	// ExitTypes is called when exiting the types production.
+	ExitTypes(c *TypesContext)
+
 	// ExitExpr is called when exiting the expr production.
 	ExitExpr(c *ExprContext)
+
+	// ExitListParams is called when exiting the listParams production.
+	ExitListParams(c *ListParamsContext)
+
+	// ExitListArray is called when exiting the listArray production.
+	ExitListArray(c *ListArrayContext)
 }

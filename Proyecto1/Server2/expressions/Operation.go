@@ -39,7 +39,6 @@ func (o Operation) Ejecutar(ast *environment.AST, env interface{}) environment.S
 	var op1, op2 environment.Symbol
 	op1 = o.Op_izq.Ejecutar(ast, env)
 	op2 = o.Op_der.Ejecutar(ast, env)
-
 	switch o.Operador {
 	case "+":
 		{
