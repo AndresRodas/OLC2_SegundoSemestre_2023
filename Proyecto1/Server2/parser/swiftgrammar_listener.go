@@ -16,6 +16,21 @@ type SwiftGrammarListener interface {
 	// EnterInstruction is called when entering the instruction production.
 	EnterInstruction(c *InstructionContext)
 
+	// EnterStructCreation is called when entering the structCreation production.
+	EnterStructCreation(c *StructCreationContext)
+
+	// EnterListStructDec is called when entering the listStructDec production.
+	EnterListStructDec(c *ListStructDecContext)
+
+	// EnterFunction is called when entering the function production.
+	EnterFunction(c *FunctionContext)
+
+	// EnterListParamsFunc is called when entering the listParamsFunc production.
+	EnterListParamsFunc(c *ListParamsFuncContext)
+
+	// EnterAssignment is called when entering the assignment production.
+	EnterAssignment(c *AssignmentContext)
+
 	// EnterPrintstmt is called when entering the printstmt production.
 	EnterPrintstmt(c *PrintstmtContext)
 
@@ -37,6 +52,15 @@ type SwiftGrammarListener interface {
 	// EnterListArray is called when entering the listArray production.
 	EnterListArray(c *ListArrayContext)
 
+	// EnterCallFunction is called when entering the callFunction production.
+	EnterCallFunction(c *CallFunctionContext)
+
+	// EnterListParamsCall is called when entering the listParamsCall production.
+	EnterListParamsCall(c *ListParamsCallContext)
+
+	// EnterListStructExp is called when entering the listStructExp production.
+	EnterListStructExp(c *ListStructExpContext)
+
 	// ExitS is called when exiting the s production.
 	ExitS(c *SContext)
 
@@ -45,6 +69,21 @@ type SwiftGrammarListener interface {
 
 	// ExitInstruction is called when exiting the instruction production.
 	ExitInstruction(c *InstructionContext)
+
+	// ExitStructCreation is called when exiting the structCreation production.
+	ExitStructCreation(c *StructCreationContext)
+
+	// ExitListStructDec is called when exiting the listStructDec production.
+	ExitListStructDec(c *ListStructDecContext)
+
+	// ExitFunction is called when exiting the function production.
+	ExitFunction(c *FunctionContext)
+
+	// ExitListParamsFunc is called when exiting the listParamsFunc production.
+	ExitListParamsFunc(c *ListParamsFuncContext)
+
+	// ExitAssignment is called when exiting the assignment production.
+	ExitAssignment(c *AssignmentContext)
 
 	// ExitPrintstmt is called when exiting the printstmt production.
 	ExitPrintstmt(c *PrintstmtContext)
@@ -66,4 +105,13 @@ type SwiftGrammarListener interface {
 
 	// ExitListArray is called when exiting the listArray production.
 	ExitListArray(c *ListArrayContext)
+
+	// ExitCallFunction is called when exiting the callFunction production.
+	ExitCallFunction(c *CallFunctionContext)
+
+	// ExitListParamsCall is called when exiting the listParamsCall production.
+	ExitListParamsCall(c *ListParamsCallContext)
+
+	// ExitListStructExp is called when exiting the listStructExp production.
+	ExitListStructExp(c *ListStructExpContext)
 }

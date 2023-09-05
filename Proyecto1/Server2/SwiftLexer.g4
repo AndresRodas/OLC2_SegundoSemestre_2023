@@ -15,6 +15,8 @@ IF:     'if';
 ELSE:   'else';
 WHILE:  'while';
 VAR:    'var';
+FUNC:   'func';
+STRUCT: 'struct';
 
 // primitives
 NUMBER : [0-9]+ ('.'[0-9]+)?;
@@ -45,6 +47,7 @@ D_PTS:          ':';
 CORIZQ:         '[';
 CORDER:         ']';
 COMA:           ',';
+ARROW1:         '->';
 
 // skip
 WHITESPACE: [ \\\r\n\t]+ -> skip;

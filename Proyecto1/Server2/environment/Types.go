@@ -9,4 +9,5 @@ const (
 	BOOLEAN                      //3
 	NULL                         //4
 	ARRAY                        //5
+	STRUCT                       //6
 )
