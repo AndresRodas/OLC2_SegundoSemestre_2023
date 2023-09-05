@@ -25,8 +25,8 @@ const Home = () => {
     return (
         <div>
             <div style={{display: 'flex'}}>
-                <InputTextarea value={codeText} rows={8} cols={40} style={{marginBottom: '5%', marginRight: '2%'}} onChange={e => {setCodeText(e.target.value)}}/>
-                <InputTextarea value={consoleText} rows={8} cols={40} style={{marginBottom: '5%', marginLeft: '2%'}} onChange={e => {setConsoleText(e.target.value)}}/>
+                <InputTextarea value={codeText} rows={15} cols={60} style={{marginBottom: '5%', marginRight: '2%'}} onChange={e => {setCodeText(e.target.value)}}/>
+                <InputTextarea value={consoleText} rows={15} cols={60} style={{marginBottom: '5%', marginLeft: '2%'}} onChange={e => {setConsoleText(e.target.value)}}/>
             </div>
             <div style={{display: 'flex'}}>
                 <Button label="RUN VISITOR" onClick={CompileVisitor} style={{marginRight: '2%'}} />

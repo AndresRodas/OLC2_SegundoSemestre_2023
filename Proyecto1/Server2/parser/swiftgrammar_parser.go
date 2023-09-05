@@ -42,14 +42,15 @@ func swiftgrammarParserInit() {
 		"'if'", "'else'", "'while'", "'var'", "'func'", "'struct'", "", "",
 		"", "'!='", "'=='", "'!'", "'||'", "'&&'", "'='", "'>='", "'<='", "'>'",
 		"'<'", "'*'", "'/'", "'+'", "'-'", "'('", "')'", "'{'", "'}'", "':'",
-		"'['", "']'", "','", "'->'",
+		"'['", "']'", "','", "'->'", "'.'",
 	}
 	staticData.SymbolicNames = []string{
 		"", "INT", "FLOAT", "BOOL", "STR", "TRU", "FAL", "PRINT", "IF", "ELSE",
 		"WHILE", "VAR", "FUNC", "STRUCT", "NUMBER", "STRING", "ID", "DIF", "IG_IG",
 		"NOT", "OR", "AND", "IG", "MAY_IG", "MEN_IG", "MAYOR", "MENOR", "MUL",
 		"DIV", "ADD", "SUB", "PARIZQ", "PARDER", "LLAVEIZQ", "LLAVEDER", "D_PTS",
-		"CORIZQ", "CORDER", "COMA", "ARROW1", "WHITESPACE", "COMMENT", "LINE_COMMENT",
+		"CORIZQ", "CORDER", "COMA", "ARROW1", "PUNTO", "WHITESPACE", "COMMENT",
+		"LINE_COMMENT",
 	}
 	staticData.RuleNames = []string{
 		"s", "block", "instruction", "structCreation", "listStructDec", "function",
@@ -59,7 +60,7 @@ func swiftgrammarParserInit() {
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 42, 336, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 43, 340, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 2, 15, 7, 15,
 		2, 16, 7, 16, 2, 17, 7, 17, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 4, 1, 42, 8,
@@ -86,124 +87,127 @@ func swiftgrammarParserInit() {
 		12, 258, 8, 12, 10, 12, 12, 12, 261, 9, 12, 1, 13, 1, 13, 1, 13, 1, 13,
 		1, 13, 1, 13, 1, 13, 1, 13, 1, 13, 5, 13, 272, 8, 13, 10, 13, 12, 13, 275,
 		9, 13, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1,
-		14, 5, 14, 287, 8, 14, 10, 14, 12, 14, 290, 9, 14, 1, 15, 1, 15, 1, 15,
-		1, 15, 1, 15, 1, 15, 1, 16, 1, 16, 1, 16, 1, 16, 1, 16, 3, 16, 303, 8,
-		16, 1, 16, 1, 16, 1, 16, 1, 16, 1, 16, 5, 16, 310, 8, 16, 10, 16, 12, 16,
-		313, 9, 16, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17, 3, 17, 322,
-		8, 17, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17, 5, 17, 331, 8,
-		17, 10, 17, 12, 17, 334, 9, 17, 1, 17, 0, 7, 8, 12, 24, 26, 28, 32, 34,
-		18, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34,
-		0, 5, 1, 0, 27, 28, 1, 0, 29, 30, 2, 0, 23, 23, 25, 25, 2, 0, 24, 24, 26,
-		26, 1, 0, 17, 18, 354, 0, 36, 1, 0, 0, 0, 2, 41, 1, 0, 0, 0, 4, 65, 1,
-		0, 0, 0, 6, 67, 1, 0, 0, 0, 8, 82, 1, 0, 0, 0, 10, 119, 1, 0, 0, 0, 12,
-		128, 1, 0, 0, 0, 14, 142, 1, 0, 0, 0, 16, 147, 1, 0, 0, 0, 18, 153, 1,
-		0, 0, 0, 20, 174, 1, 0, 0, 0, 22, 187, 1, 0, 0, 0, 24, 220, 1, 0, 0, 0,
-		26, 262, 1, 0, 0, 0, 28, 276, 1, 0, 0, 0, 30, 291, 1, 0, 0, 0, 32, 302,
-		1, 0, 0, 0, 34, 321, 1, 0, 0, 0, 36, 37, 3, 2, 1, 0, 37, 38, 5, 0, 0, 1,
-		38, 39, 6, 0, -1, 0, 39, 1, 1, 0, 0, 0, 40, 42, 3, 4, 2, 0, 41, 40, 1,
-		0, 0, 0, 42, 43, 1, 0, 0, 0, 43, 41, 1, 0, 0, 0, 43, 44, 1, 0, 0, 0, 44,
-		45, 1, 0, 0, 0, 45, 46, 6, 1, -1, 0, 46, 3, 1, 0, 0, 0, 47, 48, 3, 16,
-		8, 0, 48, 49, 6, 2, -1, 0, 49, 66, 1, 0, 0, 0, 50, 51, 3, 18, 9, 0, 51,
-		52, 6, 2, -1, 0, 52, 66, 1, 0, 0, 0, 53, 54, 3, 20, 10, 0, 54, 55, 6, 2,
-		-1, 0, 55, 66, 1, 0, 0, 0, 56, 57, 3, 14, 7, 0, 57, 58, 6, 2, -1, 0, 58,
-		66, 1, 0, 0, 0, 59, 60, 3, 10, 5, 0, 60, 61, 6, 2, -1, 0, 61, 66, 1, 0,
-		0, 0, 62, 63, 3, 6, 3, 0, 63, 64, 6, 2, -1, 0, 64, 66, 1, 0, 0, 0, 65,
-		47, 1, 0, 0, 0, 65, 50, 1, 0, 0, 0, 65, 53, 1, 0, 0, 0, 65, 56, 1, 0, 0,
-		0, 65, 59, 1, 0, 0, 0, 65, 62, 1, 0, 0, 0, 66, 5, 1, 0, 0, 0, 67, 68, 5,
-		13, 0, 0, 68, 69, 5, 16, 0, 0, 69, 70, 5, 33, 0, 0, 70, 71, 3, 8, 4, 0,
-		71, 72, 5, 34, 0, 0, 72, 73, 6, 3, -1, 0, 73, 7, 1, 0, 0, 0, 74, 75, 6,
-		4, -1, 0, 75, 76, 5, 11, 0, 0, 76, 77, 5, 16, 0, 0, 77, 78, 5, 35, 0, 0,
-		78, 79, 3, 22, 11, 0, 79, 80, 6, 4, -1, 0, 80, 83, 1, 0, 0, 0, 81, 83,
-		6, 4, -1, 0, 82, 74, 1, 0, 0, 0, 82, 81, 1, 0, 0, 0, 83, 94, 1, 0, 0, 0,
-		84, 85, 10, 3, 0, 0, 85, 86, 5, 38, 0, 0, 86, 87, 5, 11, 0, 0, 87, 88,
-		5, 16, 0, 0, 88, 89, 5, 35, 0, 0, 89, 90, 3, 22, 11, 0, 90, 91, 6, 4, -1,
-		0, 91, 93, 1, 0, 0, 0, 92, 84, 1, 0, 0, 0, 93, 96, 1, 0, 0, 0, 94, 92,
-		1, 0, 0, 0, 94, 95, 1, 0, 0, 0, 95, 9, 1, 0, 0, 0, 96, 94, 1, 0, 0, 0,
-		97, 98, 5, 12, 0, 0, 98, 99, 5, 16, 0, 0, 99, 100, 5, 31, 0, 0, 100, 101,
-		3, 12, 6, 0, 101, 102, 5, 32, 0, 0, 102, 103, 5, 33, 0, 0, 103, 104, 3,
-		2, 1, 0, 104, 105, 5, 34, 0, 0, 105, 106, 6, 5, -1, 0, 106, 120, 1, 0,
-		0, 0, 107, 108, 5, 12, 0, 0, 108, 109, 5, 16, 0, 0, 109, 110, 5, 31, 0,
-		0, 110, 111, 3, 12, 6, 0, 111, 112, 5, 32, 0, 0, 112, 113, 5, 39, 0, 0,
-		113, 114, 3, 22, 11, 0, 114, 115, 5, 33, 0, 0, 115, 116, 3, 2, 1, 0, 116,
-		117, 5, 34, 0, 0, 117, 118, 6, 5, -1, 0, 118, 120, 1, 0, 0, 0, 119, 97,
-		1, 0, 0, 0, 119, 107, 1, 0, 0, 0, 120, 11, 1, 0, 0, 0, 121, 122, 6, 6,
-		-1, 0, 122, 123, 5, 16, 0, 0, 123, 124, 5, 35, 0, 0, 124, 125, 3, 22, 11,
-		0, 125, 126, 6, 6, -1, 0, 126, 129, 1, 0, 0, 0, 127, 129, 6, 6, -1, 0,
-		128, 121, 1, 0, 0, 0, 128, 127, 1, 0, 0, 0, 129, 139, 1, 0, 0, 0, 130,
-		131, 10, 3, 0, 0, 131, 132, 5, 38, 0, 0, 132, 133, 5, 16, 0, 0, 133, 134,
-		5, 35, 0, 0, 134, 135, 3, 22, 11, 0, 135, 136, 6, 6, -1, 0, 136, 138, 1,
-		0, 0, 0, 137, 130, 1, 0, 0, 0, 138, 141, 1, 0, 0, 0, 139, 137, 1, 0, 0,
-		0, 139, 140, 1, 0, 0, 0, 140, 13, 1, 0, 0, 0, 141, 139, 1, 0, 0, 0, 142,
-		143, 5, 16, 0, 0, 143, 144, 5, 22, 0, 0, 144, 145, 3, 24, 12, 0, 145, 146,
-		6, 7, -1, 0, 146, 15, 1, 0, 0, 0, 147, 148, 5, 7, 0, 0, 148, 149, 5, 31,
-		0, 0, 149, 150, 3, 24, 12, 0, 150, 151, 5, 32, 0, 0, 151, 152, 6, 8, -1,
-		0, 152, 17, 1, 0, 0, 0, 153, 154, 5, 8, 0, 0, 154, 155, 3, 24, 12, 0, 155,
-		156, 5, 33, 0, 0, 156, 157, 3, 2, 1, 0, 157, 158, 5, 34, 0, 0, 158, 159,
-		6, 9, -1, 0, 159, 19, 1, 0, 0, 0, 160, 161, 5, 11, 0, 0, 161, 162, 5, 16,
-		0, 0, 162, 163, 5, 35, 0, 0, 163, 164, 3, 22, 11, 0, 164, 165, 5, 22, 0,
-		0, 165, 166, 3, 24, 12, 0, 166, 167, 6, 10, -1, 0, 167, 175, 1, 0, 0, 0,
-		168, 169, 5, 11, 0, 0, 169, 170, 5, 16, 0, 0, 170, 171, 5, 22, 0, 0, 171,
-		172, 3, 24, 12, 0, 172, 173, 6, 10, -1, 0, 173, 175, 1, 0, 0, 0, 174, 160,
-		1, 0, 0, 0, 174, 168, 1, 0, 0, 0, 175, 21, 1, 0, 0, 0, 176, 177, 5, 1,
-		0, 0, 177, 188, 6, 11, -1, 0, 178, 179, 5, 2, 0, 0, 179, 188, 6, 11, -1,
-		0, 180, 181, 5, 4, 0, 0, 181, 188, 6, 11, -1, 0, 182, 183, 5, 3, 0, 0,
-		183, 188, 6, 11, -1, 0, 184, 185, 5, 36, 0, 0, 185, 186, 5, 37, 0, 0, 186,
-		188, 6, 11, -1, 0, 187, 176, 1, 0, 0, 0, 187, 178, 1, 0, 0, 0, 187, 180,
-		1, 0, 0, 0, 187, 182, 1, 0, 0, 0, 187, 184, 1, 0, 0, 0, 188, 23, 1, 0,
-		0, 0, 189, 190, 6, 12, -1, 0, 190, 191, 3, 30, 15, 0, 191, 192, 6, 12,
-		-1, 0, 192, 221, 1, 0, 0, 0, 193, 194, 5, 16, 0, 0, 194, 195, 5, 33, 0,
-		0, 195, 196, 3, 34, 17, 0, 196, 197, 5, 34, 0, 0, 197, 198, 6, 12, -1,
-		0, 198, 221, 1, 0, 0, 0, 199, 200, 5, 31, 0, 0, 200, 201, 3, 24, 12, 0,
-		201, 202, 5, 32, 0, 0, 202, 203, 6, 12, -1, 0, 203, 221, 1, 0, 0, 0, 204,
-		205, 3, 28, 14, 0, 205, 206, 6, 12, -1, 0, 206, 221, 1, 0, 0, 0, 207, 208,
-		5, 36, 0, 0, 208, 209, 3, 26, 13, 0, 209, 210, 5, 37, 0, 0, 210, 211, 6,
-		12, -1, 0, 211, 221, 1, 0, 0, 0, 212, 213, 5, 14, 0, 0, 213, 221, 6, 12,
-		-1, 0, 214, 215, 5, 15, 0, 0, 215, 221, 6, 12, -1, 0, 216, 217, 5, 5, 0,
-		0, 217, 221, 6, 12, -1, 0, 218, 219, 5, 6, 0, 0, 219, 221, 6, 12, -1, 0,
-		220, 189, 1, 0, 0, 0, 220, 193, 1, 0, 0, 0, 220, 199, 1, 0, 0, 0, 220,
-		204, 1, 0, 0, 0, 220, 207, 1, 0, 0, 0, 220, 212, 1, 0, 0, 0, 220, 214,
-		1, 0, 0, 0, 220, 216, 1, 0, 0, 0, 220, 218, 1, 0, 0, 0, 221, 259, 1, 0,
-		0, 0, 222, 223, 10, 16, 0, 0, 223, 224, 7, 0, 0, 0, 224, 225, 3, 24, 12,
-		17, 225, 226, 6, 12, -1, 0, 226, 258, 1, 0, 0, 0, 227, 228, 10, 15, 0,
-		0, 228, 229, 7, 1, 0, 0, 229, 230, 3, 24, 12, 16, 230, 231, 6, 12, -1,
-		0, 231, 258, 1, 0, 0, 0, 232, 233, 10, 14, 0, 0, 233, 234, 7, 2, 0, 0,
-		234, 235, 3, 24, 12, 15, 235, 236, 6, 12, -1, 0, 236, 258, 1, 0, 0, 0,
-		237, 238, 10, 13, 0, 0, 238, 239, 7, 3, 0, 0, 239, 240, 3, 24, 12, 14,
-		240, 241, 6, 12, -1, 0, 241, 258, 1, 0, 0, 0, 242, 243, 10, 12, 0, 0, 243,
-		244, 7, 4, 0, 0, 244, 245, 3, 24, 12, 13, 245, 246, 6, 12, -1, 0, 246,
-		258, 1, 0, 0, 0, 247, 248, 10, 11, 0, 0, 248, 249, 5, 21, 0, 0, 249, 250,
-		3, 24, 12, 12, 250, 251, 6, 12, -1, 0, 251, 258, 1, 0, 0, 0, 252, 253,
-		10, 10, 0, 0, 253, 254, 5, 20, 0, 0, 254, 255, 3, 24, 12, 11, 255, 256,
-		6, 12, -1, 0, 256, 258, 1, 0, 0, 0, 257, 222, 1, 0, 0, 0, 257, 227, 1,
-		0, 0, 0, 257, 232, 1, 0, 0, 0, 257, 237, 1, 0, 0, 0, 257, 242, 1, 0, 0,
-		0, 257, 247, 1, 0, 0, 0, 257, 252, 1, 0, 0, 0, 258, 261, 1, 0, 0, 0, 259,
-		257, 1, 0, 0, 0, 259, 260, 1, 0, 0, 0, 260, 25, 1, 0, 0, 0, 261, 259, 1,
-		0, 0, 0, 262, 263, 6, 13, -1, 0, 263, 264, 3, 24, 12, 0, 264, 265, 6, 13,
-		-1, 0, 265, 273, 1, 0, 0, 0, 266, 267, 10, 2, 0, 0, 267, 268, 5, 38, 0,
-		0, 268, 269, 3, 24, 12, 0, 269, 270, 6, 13, -1, 0, 270, 272, 1, 0, 0, 0,
-		271, 266, 1, 0, 0, 0, 272, 275, 1, 0, 0, 0, 273, 271, 1, 0, 0, 0, 273,
-		274, 1, 0, 0, 0, 274, 27, 1, 0, 0, 0, 275, 273, 1, 0, 0, 0, 276, 277, 6,
-		14, -1, 0, 277, 278, 5, 16, 0, 0, 278, 279, 6, 14, -1, 0, 279, 288, 1,
-		0, 0, 0, 280, 281, 10, 2, 0, 0, 281, 282, 5, 36, 0, 0, 282, 283, 3, 24,
-		12, 0, 283, 284, 5, 37, 0, 0, 284, 285, 6, 14, -1, 0, 285, 287, 1, 0, 0,
-		0, 286, 280, 1, 0, 0, 0, 287, 290, 1, 0, 0, 0, 288, 286, 1, 0, 0, 0, 288,
-		289, 1, 0, 0, 0, 289, 29, 1, 0, 0, 0, 290, 288, 1, 0, 0, 0, 291, 292, 5,
-		16, 0, 0, 292, 293, 5, 31, 0, 0, 293, 294, 3, 32, 16, 0, 294, 295, 5, 32,
-		0, 0, 295, 296, 6, 15, -1, 0, 296, 31, 1, 0, 0, 0, 297, 298, 6, 16, -1,
-		0, 298, 299, 3, 24, 12, 0, 299, 300, 6, 16, -1, 0, 300, 303, 1, 0, 0, 0,
-		301, 303, 6, 16, -1, 0, 302, 297, 1, 0, 0, 0, 302, 301, 1, 0, 0, 0, 303,
-		311, 1, 0, 0, 0, 304, 305, 10, 3, 0, 0, 305, 306, 5, 38, 0, 0, 306, 307,
-		3, 24, 12, 0, 307, 308, 6, 16, -1, 0, 308, 310, 1, 0, 0, 0, 309, 304, 1,
-		0, 0, 0, 310, 313, 1, 0, 0, 0, 311, 309, 1, 0, 0, 0, 311, 312, 1, 0, 0,
-		0, 312, 33, 1, 0, 0, 0, 313, 311, 1, 0, 0, 0, 314, 315, 6, 17, -1, 0, 315,
-		316, 5, 16, 0, 0, 316, 317, 5, 35, 0, 0, 317, 318, 3, 24, 12, 0, 318, 319,
-		6, 17, -1, 0, 319, 322, 1, 0, 0, 0, 320, 322, 6, 17, -1, 0, 321, 314, 1,
-		0, 0, 0, 321, 320, 1, 0, 0, 0, 322, 332, 1, 0, 0, 0, 323, 324, 10, 3, 0,
-		0, 324, 325, 5, 38, 0, 0, 325, 326, 5, 16, 0, 0, 326, 327, 5, 35, 0, 0,
-		327, 328, 3, 24, 12, 0, 328, 329, 6, 17, -1, 0, 329, 331, 1, 0, 0, 0, 330,
-		323, 1, 0, 0, 0, 331, 334, 1, 0, 0, 0, 332, 330, 1, 0, 0, 0, 332, 333,
-		1, 0, 0, 0, 333, 35, 1, 0, 0, 0, 334, 332, 1, 0, 0, 0, 18, 43, 65, 82,
-		94, 119, 128, 139, 174, 187, 220, 257, 259, 273, 288, 302, 311, 321, 332,
+		14, 1, 14, 1, 14, 1, 14, 1, 14, 5, 14, 291, 8, 14, 10, 14, 12, 14, 294,
+		9, 14, 1, 15, 1, 15, 1, 15, 1, 15, 1, 15, 1, 15, 1, 16, 1, 16, 1, 16, 1,
+		16, 1, 16, 3, 16, 307, 8, 16, 1, 16, 1, 16, 1, 16, 1, 16, 1, 16, 5, 16,
+		314, 8, 16, 10, 16, 12, 16, 317, 9, 16, 1, 17, 1, 17, 1, 17, 1, 17, 1,
+		17, 1, 17, 1, 17, 3, 17, 326, 8, 17, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17,
+		1, 17, 1, 17, 5, 17, 335, 8, 17, 10, 17, 12, 17, 338, 9, 17, 1, 17, 0,
+		7, 8, 12, 24, 26, 28, 32, 34, 18, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20,
+		22, 24, 26, 28, 30, 32, 34, 0, 5, 1, 0, 27, 28, 1, 0, 29, 30, 2, 0, 23,
+		23, 25, 25, 2, 0, 24, 24, 26, 26, 1, 0, 17, 18, 359, 0, 36, 1, 0, 0, 0,
+		2, 41, 1, 0, 0, 0, 4, 65, 1, 0, 0, 0, 6, 67, 1, 0, 0, 0, 8, 82, 1, 0, 0,
+		0, 10, 119, 1, 0, 0, 0, 12, 128, 1, 0, 0, 0, 14, 142, 1, 0, 0, 0, 16, 147,
+		1, 0, 0, 0, 18, 153, 1, 0, 0, 0, 20, 174, 1, 0, 0, 0, 22, 187, 1, 0, 0,
+		0, 24, 220, 1, 0, 0, 0, 26, 262, 1, 0, 0, 0, 28, 276, 1, 0, 0, 0, 30, 295,
+		1, 0, 0, 0, 32, 306, 1, 0, 0, 0, 34, 325, 1, 0, 0, 0, 36, 37, 3, 2, 1,
+		0, 37, 38, 5, 0, 0, 1, 38, 39, 6, 0, -1, 0, 39, 1, 1, 0, 0, 0, 40, 42,
+		3, 4, 2, 0, 41, 40, 1, 0, 0, 0, 42, 43, 1, 0, 0, 0, 43, 41, 1, 0, 0, 0,
+		43, 44, 1, 0, 0, 0, 44, 45, 1, 0, 0, 0, 45, 46, 6, 1, -1, 0, 46, 3, 1,
+		0, 0, 0, 47, 48, 3, 16, 8, 0, 48, 49, 6, 2, -1, 0, 49, 66, 1, 0, 0, 0,
+		50, 51, 3, 18, 9, 0, 51, 52, 6, 2, -1, 0, 52, 66, 1, 0, 0, 0, 53, 54, 3,
+		20, 10, 0, 54, 55, 6, 2, -1, 0, 55, 66, 1, 0, 0, 0, 56, 57, 3, 14, 7, 0,
+		57, 58, 6, 2, -1, 0, 58, 66, 1, 0, 0, 0, 59, 60, 3, 10, 5, 0, 60, 61, 6,
+		2, -1, 0, 61, 66, 1, 0, 0, 0, 62, 63, 3, 6, 3, 0, 63, 64, 6, 2, -1, 0,
+		64, 66, 1, 0, 0, 0, 65, 47, 1, 0, 0, 0, 65, 50, 1, 0, 0, 0, 65, 53, 1,
+		0, 0, 0, 65, 56, 1, 0, 0, 0, 65, 59, 1, 0, 0, 0, 65, 62, 1, 0, 0, 0, 66,
+		5, 1, 0, 0, 0, 67, 68, 5, 13, 0, 0, 68, 69, 5, 16, 0, 0, 69, 70, 5, 33,
+		0, 0, 70, 71, 3, 8, 4, 0, 71, 72, 5, 34, 0, 0, 72, 73, 6, 3, -1, 0, 73,
+		7, 1, 0, 0, 0, 74, 75, 6, 4, -1, 0, 75, 76, 5, 11, 0, 0, 76, 77, 5, 16,
+		0, 0, 77, 78, 5, 35, 0, 0, 78, 79, 3, 22, 11, 0, 79, 80, 6, 4, -1, 0, 80,
+		83, 1, 0, 0, 0, 81, 83, 6, 4, -1, 0, 82, 74, 1, 0, 0, 0, 82, 81, 1, 0,
+		0, 0, 83, 94, 1, 0, 0, 0, 84, 85, 10, 3, 0, 0, 85, 86, 5, 38, 0, 0, 86,
+		87, 5, 11, 0, 0, 87, 88, 5, 16, 0, 0, 88, 89, 5, 35, 0, 0, 89, 90, 3, 22,
+		11, 0, 90, 91, 6, 4, -1, 0, 91, 93, 1, 0, 0, 0, 92, 84, 1, 0, 0, 0, 93,
+		96, 1, 0, 0, 0, 94, 92, 1, 0, 0, 0, 94, 95, 1, 0, 0, 0, 95, 9, 1, 0, 0,
+		0, 96, 94, 1, 0, 0, 0, 97, 98, 5, 12, 0, 0, 98, 99, 5, 16, 0, 0, 99, 100,
+		5, 31, 0, 0, 100, 101, 3, 12, 6, 0, 101, 102, 5, 32, 0, 0, 102, 103, 5,
+		33, 0, 0, 103, 104, 3, 2, 1, 0, 104, 105, 5, 34, 0, 0, 105, 106, 6, 5,
+		-1, 0, 106, 120, 1, 0, 0, 0, 107, 108, 5, 12, 0, 0, 108, 109, 5, 16, 0,
+		0, 109, 110, 5, 31, 0, 0, 110, 111, 3, 12, 6, 0, 111, 112, 5, 32, 0, 0,
+		112, 113, 5, 39, 0, 0, 113, 114, 3, 22, 11, 0, 114, 115, 5, 33, 0, 0, 115,
+		116, 3, 2, 1, 0, 116, 117, 5, 34, 0, 0, 117, 118, 6, 5, -1, 0, 118, 120,
+		1, 0, 0, 0, 119, 97, 1, 0, 0, 0, 119, 107, 1, 0, 0, 0, 120, 11, 1, 0, 0,
+		0, 121, 122, 6, 6, -1, 0, 122, 123, 5, 16, 0, 0, 123, 124, 5, 35, 0, 0,
+		124, 125, 3, 22, 11, 0, 125, 126, 6, 6, -1, 0, 126, 129, 1, 0, 0, 0, 127,
+		129, 6, 6, -1, 0, 128, 121, 1, 0, 0, 0, 128, 127, 1, 0, 0, 0, 129, 139,
+		1, 0, 0, 0, 130, 131, 10, 3, 0, 0, 131, 132, 5, 38, 0, 0, 132, 133, 5,
+		16, 0, 0, 133, 134, 5, 35, 0, 0, 134, 135, 3, 22, 11, 0, 135, 136, 6, 6,
+		-1, 0, 136, 138, 1, 0, 0, 0, 137, 130, 1, 0, 0, 0, 138, 141, 1, 0, 0, 0,
+		139, 137, 1, 0, 0, 0, 139, 140, 1, 0, 0, 0, 140, 13, 1, 0, 0, 0, 141, 139,
+		1, 0, 0, 0, 142, 143, 5, 16, 0, 0, 143, 144, 5, 22, 0, 0, 144, 145, 3,
+		24, 12, 0, 145, 146, 6, 7, -1, 0, 146, 15, 1, 0, 0, 0, 147, 148, 5, 7,
+		0, 0, 148, 149, 5, 31, 0, 0, 149, 150, 3, 24, 12, 0, 150, 151, 5, 32, 0,
+		0, 151, 152, 6, 8, -1, 0, 152, 17, 1, 0, 0, 0, 153, 154, 5, 8, 0, 0, 154,
+		155, 3, 24, 12, 0, 155, 156, 5, 33, 0, 0, 156, 157, 3, 2, 1, 0, 157, 158,
+		5, 34, 0, 0, 158, 159, 6, 9, -1, 0, 159, 19, 1, 0, 0, 0, 160, 161, 5, 11,
+		0, 0, 161, 162, 5, 16, 0, 0, 162, 163, 5, 35, 0, 0, 163, 164, 3, 22, 11,
+		0, 164, 165, 5, 22, 0, 0, 165, 166, 3, 24, 12, 0, 166, 167, 6, 10, -1,
+		0, 167, 175, 1, 0, 0, 0, 168, 169, 5, 11, 0, 0, 169, 170, 5, 16, 0, 0,
+		170, 171, 5, 22, 0, 0, 171, 172, 3, 24, 12, 0, 172, 173, 6, 10, -1, 0,
+		173, 175, 1, 0, 0, 0, 174, 160, 1, 0, 0, 0, 174, 168, 1, 0, 0, 0, 175,
+		21, 1, 0, 0, 0, 176, 177, 5, 1, 0, 0, 177, 188, 6, 11, -1, 0, 178, 179,
+		5, 2, 0, 0, 179, 188, 6, 11, -1, 0, 180, 181, 5, 4, 0, 0, 181, 188, 6,
+		11, -1, 0, 182, 183, 5, 3, 0, 0, 183, 188, 6, 11, -1, 0, 184, 185, 5, 36,
+		0, 0, 185, 186, 5, 37, 0, 0, 186, 188, 6, 11, -1, 0, 187, 176, 1, 0, 0,
+		0, 187, 178, 1, 0, 0, 0, 187, 180, 1, 0, 0, 0, 187, 182, 1, 0, 0, 0, 187,
+		184, 1, 0, 0, 0, 188, 23, 1, 0, 0, 0, 189, 190, 6, 12, -1, 0, 190, 191,
+		3, 30, 15, 0, 191, 192, 6, 12, -1, 0, 192, 221, 1, 0, 0, 0, 193, 194, 5,
+		16, 0, 0, 194, 195, 5, 33, 0, 0, 195, 196, 3, 34, 17, 0, 196, 197, 5, 34,
+		0, 0, 197, 198, 6, 12, -1, 0, 198, 221, 1, 0, 0, 0, 199, 200, 5, 31, 0,
+		0, 200, 201, 3, 24, 12, 0, 201, 202, 5, 32, 0, 0, 202, 203, 6, 12, -1,
+		0, 203, 221, 1, 0, 0, 0, 204, 205, 3, 28, 14, 0, 205, 206, 6, 12, -1, 0,
+		206, 221, 1, 0, 0, 0, 207, 208, 5, 36, 0, 0, 208, 209, 3, 26, 13, 0, 209,
+		210, 5, 37, 0, 0, 210, 211, 6, 12, -1, 0, 211, 221, 1, 0, 0, 0, 212, 213,
+		5, 14, 0, 0, 213, 221, 6, 12, -1, 0, 214, 215, 5, 15, 0, 0, 215, 221, 6,
+		12, -1, 0, 216, 217, 5, 5, 0, 0, 217, 221, 6, 12, -1, 0, 218, 219, 5, 6,
+		0, 0, 219, 221, 6, 12, -1, 0, 220, 189, 1, 0, 0, 0, 220, 193, 1, 0, 0,
+		0, 220, 199, 1, 0, 0, 0, 220, 204, 1, 0, 0, 0, 220, 207, 1, 0, 0, 0, 220,
+		212, 1, 0, 0, 0, 220, 214, 1, 0, 0, 0, 220, 216, 1, 0, 0, 0, 220, 218,
+		1, 0, 0, 0, 221, 259, 1, 0, 0, 0, 222, 223, 10, 16, 0, 0, 223, 224, 7,
+		0, 0, 0, 224, 225, 3, 24, 12, 17, 225, 226, 6, 12, -1, 0, 226, 258, 1,
+		0, 0, 0, 227, 228, 10, 15, 0, 0, 228, 229, 7, 1, 0, 0, 229, 230, 3, 24,
+		12, 16, 230, 231, 6, 12, -1, 0, 231, 258, 1, 0, 0, 0, 232, 233, 10, 14,
+		0, 0, 233, 234, 7, 2, 0, 0, 234, 235, 3, 24, 12, 15, 235, 236, 6, 12, -1,
+		0, 236, 258, 1, 0, 0, 0, 237, 238, 10, 13, 0, 0, 238, 239, 7, 3, 0, 0,
+		239, 240, 3, 24, 12, 14, 240, 241, 6, 12, -1, 0, 241, 258, 1, 0, 0, 0,
+		242, 243, 10, 12, 0, 0, 243, 244, 7, 4, 0, 0, 244, 245, 3, 24, 12, 13,
+		245, 246, 6, 12, -1, 0, 246, 258, 1, 0, 0, 0, 247, 248, 10, 11, 0, 0, 248,
+		249, 5, 21, 0, 0, 249, 250, 3, 24, 12, 12, 250, 251, 6, 12, -1, 0, 251,
+		258, 1, 0, 0, 0, 252, 253, 10, 10, 0, 0, 253, 254, 5, 20, 0, 0, 254, 255,
+		3, 24, 12, 11, 255, 256, 6, 12, -1, 0, 256, 258, 1, 0, 0, 0, 257, 222,
+		1, 0, 0, 0, 257, 227, 1, 0, 0, 0, 257, 232, 1, 0, 0, 0, 257, 237, 1, 0,
+		0, 0, 257, 242, 1, 0, 0, 0, 257, 247, 1, 0, 0, 0, 257, 252, 1, 0, 0, 0,
+		258, 261, 1, 0, 0, 0, 259, 257, 1, 0, 0, 0, 259, 260, 1, 0, 0, 0, 260,
+		25, 1, 0, 0, 0, 261, 259, 1, 0, 0, 0, 262, 263, 6, 13, -1, 0, 263, 264,
+		3, 24, 12, 0, 264, 265, 6, 13, -1, 0, 265, 273, 1, 0, 0, 0, 266, 267, 10,
+		2, 0, 0, 267, 268, 5, 38, 0, 0, 268, 269, 3, 24, 12, 0, 269, 270, 6, 13,
+		-1, 0, 270, 272, 1, 0, 0, 0, 271, 266, 1, 0, 0, 0, 272, 275, 1, 0, 0, 0,
+		273, 271, 1, 0, 0, 0, 273, 274, 1, 0, 0, 0, 274, 27, 1, 0, 0, 0, 275, 273,
+		1, 0, 0, 0, 276, 277, 6, 14, -1, 0, 277, 278, 5, 16, 0, 0, 278, 279, 6,
+		14, -1, 0, 279, 292, 1, 0, 0, 0, 280, 281, 10, 3, 0, 0, 281, 282, 5, 36,
+		0, 0, 282, 283, 3, 24, 12, 0, 283, 284, 5, 37, 0, 0, 284, 285, 6, 14, -1,
+		0, 285, 291, 1, 0, 0, 0, 286, 287, 10, 2, 0, 0, 287, 288, 5, 40, 0, 0,
+		288, 289, 5, 16, 0, 0, 289, 291, 6, 14, -1, 0, 290, 280, 1, 0, 0, 0, 290,
+		286, 1, 0, 0, 0, 291, 294, 1, 0, 0, 0, 292, 290, 1, 0, 0, 0, 292, 293,
+		1, 0, 0, 0, 293, 29, 1, 0, 0, 0, 294, 292, 1, 0, 0, 0, 295, 296, 5, 16,
+		0, 0, 296, 297, 5, 31, 0, 0, 297, 298, 3, 32, 16, 0, 298, 299, 5, 32, 0,
+		0, 299, 300, 6, 15, -1, 0, 300, 31, 1, 0, 0, 0, 301, 302, 6, 16, -1, 0,
+		302, 303, 3, 24, 12, 0, 303, 304, 6, 16, -1, 0, 304, 307, 1, 0, 0, 0, 305,
+		307, 6, 16, -1, 0, 306, 301, 1, 0, 0, 0, 306, 305, 1, 0, 0, 0, 307, 315,
+		1, 0, 0, 0, 308, 309, 10, 3, 0, 0, 309, 310, 5, 38, 0, 0, 310, 311, 3,
+		24, 12, 0, 311, 312, 6, 16, -1, 0, 312, 314, 1, 0, 0, 0, 313, 308, 1, 0,
+		0, 0, 314, 317, 1, 0, 0, 0, 315, 313, 1, 0, 0, 0, 315, 316, 1, 0, 0, 0,
+		316, 33, 1, 0, 0, 0, 317, 315, 1, 0, 0, 0, 318, 319, 6, 17, -1, 0, 319,
+		320, 5, 16, 0, 0, 320, 321, 5, 35, 0, 0, 321, 322, 3, 24, 12, 0, 322, 323,
+		6, 17, -1, 0, 323, 326, 1, 0, 0, 0, 324, 326, 6, 17, -1, 0, 325, 318, 1,
+		0, 0, 0, 325, 324, 1, 0, 0, 0, 326, 336, 1, 0, 0, 0, 327, 328, 10, 3, 0,
+		0, 328, 329, 5, 38, 0, 0, 329, 330, 5, 16, 0, 0, 330, 331, 5, 35, 0, 0,
+		331, 332, 3, 24, 12, 0, 332, 333, 6, 17, -1, 0, 333, 335, 1, 0, 0, 0, 334,
+		327, 1, 0, 0, 0, 335, 338, 1, 0, 0, 0, 336, 334, 1, 0, 0, 0, 336, 337,
+		1, 0, 0, 0, 337, 35, 1, 0, 0, 0, 338, 336, 1, 0, 0, 0, 19, 43, 65, 82,
+		94, 119, 128, 139, 174, 187, 220, 257, 259, 273, 290, 292, 306, 315, 325,
+		336,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -281,9 +285,10 @@ const (
 	SwiftGrammarParserCORDER       = 37
 	SwiftGrammarParserCOMA         = 38
 	SwiftGrammarParserARROW1       = 39
-	SwiftGrammarParserWHITESPACE   = 40
-	SwiftGrammarParserCOMMENT      = 41
-	SwiftGrammarParserLINE_COMMENT = 42
+	SwiftGrammarParserPUNTO        = 40
+	SwiftGrammarParserWHITESPACE   = 41
+	SwiftGrammarParserCOMMENT      = 42
+	SwiftGrammarParserLINE_COMMENT = 43
 )
 
 // SwiftGrammarParser rules.
@@ -4972,6 +4977,7 @@ type IListArrayContext interface {
 	Expr() IExprContext
 	CORDER() antlr.TerminalNode
 	ListArray() IListArrayContext
+	PUNTO() antlr.TerminalNode
 
 	// IsListArrayContext differentiates from other interfaces.
 	IsListArrayContext()
@@ -5073,6 +5079,10 @@ func (s *ListArrayContext) ListArray() IListArrayContext {
 	return t.(IListArrayContext)
 }
 
+func (s *ListArrayContext) PUNTO() antlr.TerminalNode {
+	return s.GetToken(SwiftGrammarParserPUNTO, 0)
+}
+
 func (s *ListArrayContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -5141,12 +5151,12 @@ func (p *SwiftGrammarParser) listArray(_p int) (localctx IListArrayContext) {
 	}()))
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(288)
+	p.SetState(292)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
-	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 13, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 14, p.GetParserRuleContext())
 	if p.HasError() {
 		goto errorExit
 	}
@@ -5156,59 +5166,120 @@ func (p *SwiftGrammarParser) listArray(_p int) (localctx IListArrayContext) {
 				p.TriggerExitRuleEvent()
 			}
 			_prevctx = localctx
-			localctx = NewListArrayContext(p, _parentctx, _parentState)
-			localctx.(*ListArrayContext).list = _prevctx
-			p.PushNewRecursionContext(localctx, _startState, SwiftGrammarParserRULE_listArray)
-			p.SetState(280)
-
-			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
-				p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+			p.SetState(290)
+			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
 				goto errorExit
 			}
-			{
-				p.SetState(281)
-				p.Match(SwiftGrammarParserCORIZQ)
-				if p.HasError() {
-					// Recognition error - abort rule
+
+			switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 13, p.GetParserRuleContext()) {
+			case 1:
+				localctx = NewListArrayContext(p, _parentctx, _parentState)
+				localctx.(*ListArrayContext).list = _prevctx
+				p.PushNewRecursionContext(localctx, _startState, SwiftGrammarParserRULE_listArray)
+				p.SetState(280)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
 					goto errorExit
 				}
-			}
-			{
-				p.SetState(282)
+				{
+					p.SetState(281)
+					p.Match(SwiftGrammarParserCORIZQ)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
+				}
+				{
+					p.SetState(282)
 
-				var _x = p.expr(0)
+					var _x = p.expr(0)
 
-				localctx.(*ListArrayContext)._expr = _x
-			}
-			{
-				p.SetState(283)
-				p.Match(SwiftGrammarParserCORDER)
-				if p.HasError() {
-					// Recognition error - abort rule
+					localctx.(*ListArrayContext)._expr = _x
+				}
+				{
+					p.SetState(283)
+					p.Match(SwiftGrammarParserCORDER)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
+				}
+				localctx.(*ListArrayContext).p = expressions.NewArrayAccess((func() antlr.Token {
+					if localctx.(*ListArrayContext).GetList() == nil {
+						return nil
+					} else {
+						return localctx.(*ListArrayContext).GetList().GetStart()
+					}
+				}()).GetLine(), (func() antlr.Token {
+					if localctx.(*ListArrayContext).GetList() == nil {
+						return nil
+					} else {
+						return localctx.(*ListArrayContext).GetList().GetStart()
+					}
+				}()).GetColumn(), localctx.(*ListArrayContext).GetList().GetP(), localctx.(*ListArrayContext).Get_expr().GetE())
+
+			case 2:
+				localctx = NewListArrayContext(p, _parentctx, _parentState)
+				localctx.(*ListArrayContext).list = _prevctx
+				p.PushNewRecursionContext(localctx, _startState, SwiftGrammarParserRULE_listArray)
+				p.SetState(286)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 					goto errorExit
 				}
+				{
+					p.SetState(287)
+					p.Match(SwiftGrammarParserPUNTO)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
+				}
+				{
+					p.SetState(288)
+
+					var _m = p.Match(SwiftGrammarParserID)
+
+					localctx.(*ListArrayContext)._ID = _m
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
+				}
+				localctx.(*ListArrayContext).p = expressions.NewStructAccess((func() antlr.Token {
+					if localctx.(*ListArrayContext).GetList() == nil {
+						return nil
+					} else {
+						return localctx.(*ListArrayContext).GetList().GetStart()
+					}
+				}()).GetLine(), (func() antlr.Token {
+					if localctx.(*ListArrayContext).GetList() == nil {
+						return nil
+					} else {
+						return localctx.(*ListArrayContext).GetList().GetStart()
+					}
+				}()).GetColumn(), localctx.(*ListArrayContext).GetList().GetP(), (func() string {
+					if localctx.(*ListArrayContext).Get_ID() == nil {
+						return ""
+					} else {
+						return localctx.(*ListArrayContext).Get_ID().GetText()
+					}
+				}()))
+
+			case antlr.ATNInvalidAltNumber:
+				goto errorExit
 			}
-			localctx.(*ListArrayContext).p = expressions.NewArrayAccess((func() antlr.Token {
-				if localctx.(*ListArrayContext).GetList() == nil {
-					return nil
-				} else {
-					return localctx.(*ListArrayContext).GetList().GetStart()
-				}
-			}()).GetLine(), (func() antlr.Token {
-				if localctx.(*ListArrayContext).GetList() == nil {
-					return nil
-				} else {
-					return localctx.(*ListArrayContext).GetList().GetStart()
-				}
-			}()).GetColumn(), localctx.(*ListArrayContext).GetList().GetP(), localctx.(*ListArrayContext).Get_expr().GetE())
 
 		}
-		p.SetState(290)
+		p.SetState(294)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
-		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 13, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 14, p.GetParserRuleContext())
 		if p.HasError() {
 			goto errorExit
 		}
@@ -5362,7 +5433,7 @@ func (p *SwiftGrammarParser) CallFunction() (localctx ICallFunctionContext) {
 	p.EnterRule(localctx, 30, SwiftGrammarParserRULE_callFunction)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(291)
+		p.SetState(295)
 
 		var _m = p.Match(SwiftGrammarParserID)
 
@@ -5373,7 +5444,7 @@ func (p *SwiftGrammarParser) CallFunction() (localctx ICallFunctionContext) {
 		}
 	}
 	{
-		p.SetState(292)
+		p.SetState(296)
 		p.Match(SwiftGrammarParserPARIZQ)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -5381,14 +5452,14 @@ func (p *SwiftGrammarParser) CallFunction() (localctx ICallFunctionContext) {
 		}
 	}
 	{
-		p.SetState(293)
+		p.SetState(297)
 
 		var _x = p.listParamsCall(0)
 
 		localctx.(*CallFunctionContext)._listParamsCall = _x
 	}
 	{
-		p.SetState(294)
+		p.SetState(298)
 		p.Match(SwiftGrammarParserPARDER)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -5581,16 +5652,16 @@ func (p *SwiftGrammarParser) listParamsCall(_p int) (localctx IListParamsCallCon
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(302)
+	p.SetState(306)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
-	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 14, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 15, p.GetParserRuleContext()) {
 	case 1:
 		{
-			p.SetState(298)
+			p.SetState(302)
 
 			var _x = p.expr(0)
 
@@ -5608,12 +5679,12 @@ func (p *SwiftGrammarParser) listParamsCall(_p int) (localctx IListParamsCallCon
 		goto errorExit
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(311)
+	p.SetState(315)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
-	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 15, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 16, p.GetParserRuleContext())
 	if p.HasError() {
 		goto errorExit
 	}
@@ -5626,14 +5697,14 @@ func (p *SwiftGrammarParser) listParamsCall(_p int) (localctx IListParamsCallCon
 			localctx = NewListParamsCallContext(p, _parentctx, _parentState)
 			localctx.(*ListParamsCallContext).list = _prevctx
 			p.PushNewRecursionContext(localctx, _startState, SwiftGrammarParserRULE_listParamsCall)
-			p.SetState(304)
+			p.SetState(308)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 3)) {
 				p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
 				goto errorExit
 			}
 			{
-				p.SetState(305)
+				p.SetState(309)
 				p.Match(SwiftGrammarParserCOMA)
 				if p.HasError() {
 					// Recognition error - abort rule
@@ -5641,7 +5712,7 @@ func (p *SwiftGrammarParser) listParamsCall(_p int) (localctx IListParamsCallCon
 				}
 			}
 			{
-				p.SetState(306)
+				p.SetState(310)
 
 				var _x = p.expr(0)
 
@@ -5653,12 +5724,12 @@ func (p *SwiftGrammarParser) listParamsCall(_p int) (localctx IListParamsCallCon
 			localctx.(*ListParamsCallContext).l = arr
 
 		}
-		p.SetState(313)
+		p.SetState(317)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
-		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 15, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 16, p.GetParserRuleContext())
 		if p.HasError() {
 			goto errorExit
 		}
@@ -5851,16 +5922,16 @@ func (p *SwiftGrammarParser) listStructExp(_p int) (localctx IListStructExpConte
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(321)
+	p.SetState(325)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
-	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 16, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 17, p.GetParserRuleContext()) {
 	case 1:
 		{
-			p.SetState(315)
+			p.SetState(319)
 
 			var _m = p.Match(SwiftGrammarParserID)
 
@@ -5871,7 +5942,7 @@ func (p *SwiftGrammarParser) listStructExp(_p int) (localctx IListStructExpConte
 			}
 		}
 		{
-			p.SetState(316)
+			p.SetState(320)
 			p.Match(SwiftGrammarParserD_PTS)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5879,7 +5950,7 @@ func (p *SwiftGrammarParser) listStructExp(_p int) (localctx IListStructExpConte
 			}
 		}
 		{
-			p.SetState(317)
+			p.SetState(321)
 
 			var _x = p.expr(0)
 
@@ -5905,12 +5976,12 @@ func (p *SwiftGrammarParser) listStructExp(_p int) (localctx IListStructExpConte
 		goto errorExit
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(332)
+	p.SetState(336)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
-	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 17, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 18, p.GetParserRuleContext())
 	if p.HasError() {
 		goto errorExit
 	}
@@ -5923,14 +5994,14 @@ func (p *SwiftGrammarParser) listStructExp(_p int) (localctx IListStructExpConte
 			localctx = NewListStructExpContext(p, _parentctx, _parentState)
 			localctx.(*ListStructExpContext).list = _prevctx
 			p.PushNewRecursionContext(localctx, _startState, SwiftGrammarParserRULE_listStructExp)
-			p.SetState(323)
+			p.SetState(327)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 3)) {
 				p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
 				goto errorExit
 			}
 			{
-				p.SetState(324)
+				p.SetState(328)
 				p.Match(SwiftGrammarParserCOMA)
 				if p.HasError() {
 					// Recognition error - abort rule
@@ -5938,7 +6009,7 @@ func (p *SwiftGrammarParser) listStructExp(_p int) (localctx IListStructExpConte
 				}
 			}
 			{
-				p.SetState(325)
+				p.SetState(329)
 
 				var _m = p.Match(SwiftGrammarParserID)
 
@@ -5949,7 +6020,7 @@ func (p *SwiftGrammarParser) listStructExp(_p int) (localctx IListStructExpConte
 				}
 			}
 			{
-				p.SetState(326)
+				p.SetState(330)
 				p.Match(SwiftGrammarParserD_PTS)
 				if p.HasError() {
 					// Recognition error - abort rule
@@ -5957,7 +6028,7 @@ func (p *SwiftGrammarParser) listStructExp(_p int) (localctx IListStructExpConte
 				}
 			}
 			{
-				p.SetState(327)
+				p.SetState(331)
 
 				var _x = p.expr(0)
 
@@ -5976,12 +6047,12 @@ func (p *SwiftGrammarParser) listStructExp(_p int) (localctx IListStructExpConte
 			localctx.(*ListStructExpContext).l = arr
 
 		}
-		p.SetState(334)
+		p.SetState(338)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
-		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 17, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 18, p.GetParserRuleContext())
 		if p.HasError() {
 			goto errorExit
 		}
@@ -6117,6 +6188,9 @@ func (p *SwiftGrammarParser) ListParams_Sempred(localctx antlr.RuleContext, pred
 func (p *SwiftGrammarParser) ListArray_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 10:
+		return p.Precpred(p.GetParserRuleContext(), 3)
+
+	case 11:
 		return p.Precpred(p.GetParserRuleContext(), 2)
 
 	default:
@@ -6126,7 +6200,7 @@ func (p *SwiftGrammarParser) ListArray_Sempred(localctx antlr.RuleContext, predI
 
 func (p *SwiftGrammarParser) ListParamsCall_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
-	case 11:
+	case 12:
 		return p.Precpred(p.GetParserRuleContext(), 3)
 
 	default:
@@ -6136,7 +6210,7 @@ func (p *SwiftGrammarParser) ListParamsCall_Sempred(localctx antlr.RuleContext, 
 
 func (p *SwiftGrammarParser) ListStructExp_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
-	case 12:
+	case 13:
 		return p.Precpred(p.GetParserRuleContext(), 3)
 
 	default:

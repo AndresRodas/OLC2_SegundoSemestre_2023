@@ -48,6 +48,7 @@ CORIZQ:         '[';
 CORDER:         ']';
 COMA:           ',';
 ARROW1:         '->';
+PUNTO:          '.';
 
 // skip
 WHITESPACE: [ \\\r\n\t]+ -> skip;
