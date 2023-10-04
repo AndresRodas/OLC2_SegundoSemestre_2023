@@ -118,37 +118,175 @@ func (o Operation) Ejecutar(ast *environment.AST, env interface{}, gen *generato
 		}
 	case "<":
 		{
-			return result
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+			dominante = tabla_dominante[op1.Type][op2.Type]
+			if dominante == environment.INTEGER || dominante == environment.FLOAT {
+				trueLabel := gen.NewLabel()
+				falseLabel := gen.NewLabel()
+
+				gen.AddIf(op1.Value, op2.Value, "<", trueLabel)
+				gen.AddGoto(falseLabel)
+
+				result = environment.NewValue("", false, environment.BOOLEAN)
+				result.TrueLabel = append(result.TrueLabel, trueLabel)
+				result.FalseLabel = append(result.FalseLabel, falseLabel)
+				return result
+
+			} else {
+				ast.SetError("ERROR: No es posible comparar <")
+			}
 		}
 	case ">":
 		{
-			return result
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+			dominante = tabla_dominante[op1.Type][op2.Type]
+			if dominante == environment.INTEGER || dominante == environment.FLOAT {
+
+				trueLabel := gen.NewLabel()
+				falseLabel := gen.NewLabel()
+
+				gen.AddIf(op1.Value, op2.Value, ">", trueLabel)
+				gen.AddGoto(falseLabel)
+
+				result = environment.NewValue("", false, environment.BOOLEAN)
+				result.TrueLabel = append(result.TrueLabel, trueLabel)
+				result.FalseLabel = append(result.FalseLabel, falseLabel)
+				return result
+			} else {
+				ast.SetError("ERROR: No es posible comparar >")
+			}
 		}
 	case "<=":
 		{
-			return result
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+			dominante = tabla_dominante[op1.Type][op2.Type]
+			if dominante == environment.INTEGER || dominante == environment.FLOAT {
+
+				trueLabel := gen.NewLabel()
+				falseLabel := gen.NewLabel()
+
+				gen.AddIf(op1.Value, op2.Value, "<=", trueLabel)
+				gen.AddGoto(falseLabel)
+
+				result = environment.NewValue("", false, environment.BOOLEAN)
+				result.TrueLabel = append(result.TrueLabel, trueLabel)
+				result.FalseLabel = append(result.FalseLabel, falseLabel)
+				return result
+			} else {
+				ast.SetError("ERROR: No es posible comparar <=")
+			}
 		}
 	case ">=":
 		{
-			return result
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+			dominante = tabla_dominante[op1.Type][op2.Type]
+			if dominante == environment.INTEGER || dominante == environment.FLOAT {
+
+				trueLabel := gen.NewLabel()
+				falseLabel := gen.NewLabel()
+
+				gen.AddIf(op1.Value, op2.Value, ">=", trueLabel)
+				gen.AddGoto(falseLabel)
+
+				result = environment.NewValue("", false, environment.BOOLEAN)
+				result.TrueLabel = append(result.TrueLabel, trueLabel)
+				result.FalseLabel = append(result.FalseLabel, falseLabel)
+				return result
+			} else {
+				ast.SetError("ERROR: No es posible comparar >=")
+			}
 		}
 	case "==":
 		{
-			return result
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+			dominante = tabla_dominante[op1.Type][op2.Type]
+			if dominante == environment.INTEGER || dominante == environment.FLOAT {
+
+				trueLabel := gen.NewLabel()
+				falseLabel := gen.NewLabel()
+
+				gen.AddIf(op1.Value, op2.Value, "==", trueLabel)
+				gen.AddGoto(falseLabel)
+
+				result = environment.NewValue("", false, environment.BOOLEAN)
+				result.TrueLabel = append(result.TrueLabel, trueLabel)
+				result.FalseLabel = append(result.FalseLabel, falseLabel)
+				return result
+			} else {
+				ast.SetError("ERROR: No es posible comparar ==")
+			}
 		}
 	case "!=":
 		{
-			return result
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+			dominante = tabla_dominante[op1.Type][op2.Type]
+			if dominante == environment.INTEGER || dominante == environment.FLOAT {
+
+				trueLabel := gen.NewLabel()
+				falseLabel := gen.NewLabel()
+
+				gen.AddIf(op1.Value, op2.Value, "!=", trueLabel)
+				gen.AddGoto(falseLabel)
+
+				result = environment.NewValue("", false, environment.BOOLEAN)
+				result.TrueLabel = append(result.TrueLabel, trueLabel)
+				result.FalseLabel = append(result.FalseLabel, falseLabel)
+				return result
+			} else {
+				ast.SetError("ERROR: No es posible comparar !=")
+			}
 		}
 	case "&&":
 		{
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			//add op1 labels
+			for _, lvl := range op1.TrueLabel {
+				gen.AddLabel(lvl.(string))
+			}
+
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+
+			result = environment.NewValue("", false, environment.BOOLEAN)
+			result.TrueLabel = append(op2.TrueLabel, result.TrueLabel...)
+			result.FalseLabel = append(op1.FalseLabel, result.FalseLabel...)
+			result.FalseLabel = append(op2.FalseLabel, result.FalseLabel...)
 			return result
 		}
 	case "||":
 		{
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+
+			for _, lvl := range op1.FalseLabel {
+				gen.AddLabel(lvl.(string))
+			}
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+
+			result = environment.NewValue("", false, environment.BOOLEAN)
+
+			result.TrueLabel = append(op1.TrueLabel, result.TrueLabel...)
+			result.TrueLabel = append(op2.TrueLabel, result.TrueLabel...)
+			result.FalseLabel = append(op2.FalseLabel, result.FalseLabel...)
 			return result
 		}
+	case "!":
+		{
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			if op1.Type == environment.BOOLEAN {
+				result = environment.NewValue("", false, environment.BOOLEAN)
+				result.TrueLabel = append(op1.FalseLabel, result.TrueLabel)
+				result.FalseLabel = append(op1.TrueLabel, result.FalseLabel)
+				return result
+			} else {
+				ast.SetError("ERROR: tipo no compatible !")
+			}
+		}
 	}
-
-	return result
+	gen.AddBr()
+	return environment.Value{}
 }

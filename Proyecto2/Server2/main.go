@@ -52,13 +52,19 @@ func handleInterpreter(c *fiber.Ctx) error {
 	//create generator
 	var Generator generator.Generator
 	Generator = generator.NewGenerator()
+	//funciones y parámetros globales
+	//----aqui se agrega el reconocimiento de funciones y declaraciones globales
+	//running main
+	Generator.MainCode = true
 	//ejecución
 	for _, inst := range Code {
 		inst.(interfaces.Instruction).Ejecutar(&Ast, globalEnv, &Generator)
 	}
+	//add headers, natives & main
+	Generator.GenerateFinalCode()
 	var ConsoleOut = ""
 	if Ast.GetErrors() == "" {
-		for _, item := range Generator.GetCode() {
+		for _, item := range Generator.GetFinalCode() {
 			ConsoleOut += item.(string)
 		}
 	} else {
