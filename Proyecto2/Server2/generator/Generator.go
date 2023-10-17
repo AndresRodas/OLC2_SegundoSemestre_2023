@@ -42,6 +42,10 @@ func (g Generator) GetTemps() []interface{} {
 	return g.TempList
 }
 
+func (g *Generator) SetMainFlag(newVal bool) {
+	g.MainCode = newVal
+}
+
 // add break lvl
 func (g *Generator) AddBreak(lvl string) {
 	g.BreakLabel = lvl
@@ -170,6 +174,24 @@ func (g *Generator) AddComment(target string) {
 		g.Code = append(g.Code, "//"+target+"\n")
 	} else {
 		g.FuncCode = append(g.FuncCode, "//"+target+"\n")
+	}
+}
+
+func (g *Generator) AddTittle(target string) {
+	if g.MainCode {
+		g.Code = append(g.Code, "void "+target+"() {\n")
+	} else {
+		g.FuncCode = append(g.FuncCode, "void "+target+"() {\n")
+	}
+}
+
+func (g *Generator) AddEnd() {
+	if g.MainCode {
+		g.Code = append(g.Code, "\treturn;\n")
+		g.Code = append(g.Code, "}\n\n")
+	} else {
+		g.FuncCode = append(g.FuncCode, "\treturn;\n")
+		g.FuncCode = append(g.FuncCode, "}\n\n")
 	}
 }
 

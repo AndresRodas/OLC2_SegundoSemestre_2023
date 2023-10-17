@@ -5,6 +5,8 @@ import (
 	"Server2/generator"
 	"Server2/interfaces"
 	"Server2/parser"
+	"fmt"
+	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
 	"github.com/gofiber/fiber/v2"
@@ -52,14 +54,21 @@ func handleInterpreter(c *fiber.Ctx) error {
 	//create generator
 	var Generator generator.Generator
 	Generator = generator.NewGenerator()
-	//funciones y parámetros globales
-	//----aqui se agrega el reconocimiento de funciones y declaraciones globales
 	//running main
 	Generator.MainCode = true
 	//ejecución
-	for _, inst := range Code {
-		inst.(interfaces.Instruction).Ejecutar(&Ast, globalEnv, &Generator)
+	for _, bloc := range Code {
+		if strings.Contains(fmt.Sprintf("%T", bloc), "instructions") {
+			resInst := bloc.(interfaces.Instruction).Ejecutar(&Ast, globalEnv, &Generator)
+			if resInst != nil {
+				//agregando etiquetas de salida
+				for _, lvl := range resInst.(environment.Value).OutLabel {
+					Generator.AddLabel(lvl.(string))
+				}
+			}
+		}
 	}
+
 	//add headers, natives & main
 	Generator.GenerateFinalCode()
 	var ConsoleOut = ""

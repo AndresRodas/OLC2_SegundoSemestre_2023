@@ -18,5 +18,7 @@ func NewParamsDeclaration(lin int, col int, id string, tipo environment.TipoExpr
 }
 
 func (p ParamsDeclaration) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Generator) interface{} {
-	return nil
+	var result environment.Value
+	result = environment.NewValue(p.Id, false, p.Tipo)
+	return result
 }
