@@ -5,4 +5,5 @@ type Symbol struct {
 	Col      int
 	Tipo     TipoExpresion
 	Posicion int
+	ArrSize  int
 }

@@ -166,9 +166,21 @@ listParams returns[[]interface{} l]
 ;
 
 listArray returns[interfaces.Expression p]
-: list = listArray CORIZQ expr CORDER { $p = expressions.NewArrayAccess($list.start.GetLine(), $list.start.GetColumn(), $list.p, $expr.e) }
+: list = listArray arr = listAccessArray { $p = expressions.NewArrayAccess($ID.line, $ID.pos, $list.p, $arr.l) }
 | list = listArray PUNTO ID { $p = expressions.NewStructAccess($list.start.GetLine(), $list.start.GetColumn(), $list.p, $ID.text)  }
 | ID { $p = expressions.NewCallVar($ID.line, $ID.pos, $ID.text)}
+;
+
+listAccessArray returns[[]interface{} l]
+: list = listAccessArray CORIZQ expr CORDER {
+                                                var arr []interface{}
+                                                arr = append($list.l, $expr.e)
+                                                $l = arr
+                                            } 
+| CORIZQ expr CORDER    {
+                            $l = []interface{}{}
+                            $l = append($l, $expr.e)
+                        }
 ;
 
 callFunction returns[interfaces.Expression cf]

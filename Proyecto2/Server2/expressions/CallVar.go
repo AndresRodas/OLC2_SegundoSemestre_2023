@@ -40,6 +40,7 @@ func (p CallVar) Ejecutar(ast *environment.AST, env interface{}, gen *generator.
 		result.FalseLabel = append(result.FalseLabel, falseLabel)
 	} else {
 		result = environment.NewValue(newTemp2, true, retSym.Tipo)
+		result.ArrSize = retSym.ArrSize
 	}
 	return result
 }
