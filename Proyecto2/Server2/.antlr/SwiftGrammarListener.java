@@ -164,6 +164,16 @@ public interface SwiftGrammarListener extends ParseTreeListener {
 	 */
 	void exitListArray(SwiftGrammarParser.ListArrayContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#listAccessArray}.
+	 * @param ctx the parse tree
+	 */
+	void enterListAccessArray(SwiftGrammarParser.ListAccessArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#listAccessArray}.
+	 * @param ctx the parse tree
+	 */
+	void exitListAccessArray(SwiftGrammarParser.ListAccessArrayContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SwiftGrammarParser#callFunction}.
 	 * @param ctx the parse tree
 	 */

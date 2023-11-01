@@ -6,6 +6,7 @@ import (
 	"Server2/interfaces"
 	"Server2/parser"
 	"fmt"
+	"regexp"
 	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
@@ -22,10 +23,67 @@ type Resp struct {
 	Output  string
 	Flag    bool
 	Message string
+	ArrCode []interface{}
 }
 
 type Message struct {
 	Content string `json:"content"`
+}
+
+type ArrMessage struct {
+	Content []string `json:"content"`
+}
+
+func validateLineRule1(line string) bool {
+	patron := `^t\d+\s*=\s*(t\d+|\d+)\s*[+\-\*/]\s*(t\d+|\d+)$`
+	regex := regexp.MustCompile(patron)
+	flag := regex.MatchString(line)
+	return flag
+}
+
+func getTokensRule1(line string) (string, string, string, string) {
+	tempArr := strings.Split(line, " ")
+	return tempArr[0], tempArr[2], tempArr[3], tempArr[4]
+}
+
+func cleanLineRule1(line string) string {
+	noJump := strings.ReplaceAll(line, "\n", "")
+	noTab := strings.ReplaceAll(noJump, "\t", "")
+	newLine := strings.ReplaceAll(noTab, ";", "")
+	return newLine
+}
+
+func Rule1(arr []string) []string { //Eliminación de instrucciones red. de carga y almacenamiento
+	//se recorre el arreglo
+	for i := 0; i < len(arr); i++ {
+		//leyendo entrada
+		line := cleanLineRule1(arr[i])
+		//comprobando
+		if validateLineRule1(line) {
+			//obteniendo tokens
+			target1, left1, op1, right1 := getTokensRule1(line)
+			//continuando recorrido
+			for j := i + 1; j < len(arr); j++ {
+				//leyendo nueva entrada
+				line2 := cleanLineRule1(arr[j])
+				if validateLineRule1(line2) {
+					target2, left2, op2, right2 := getTokensRule1(line2)
+					//validación 1
+					if target2 == target1 || target2 == left1 || target2 == right1 {
+						break
+					}
+					//validación 2
+					if left1+op1+right1 == left2+op2+right2 || left1+op1+right1 == right2+op2+left2 {
+						//sustituir
+						arr[j] = "\t" + target2 + " = " + target1 + ";\n"
+						continue
+					}
+				}
+
+			}
+		}
+	}
+	return arr
 }
 
 func handleInterpreter(c *fiber.Ctx) error {
@@ -83,6 +141,31 @@ func handleInterpreter(c *fiber.Ctx) error {
 		Output:  ConsoleOut,
 		Flag:    true,
 		Message: "<3 Ejecución realizada con éxito <3",
+		ArrCode: Generator.GetFinalCode(),
+	}
+	return c.Status(fiber.StatusOK).JSON(response)
+}
+
+func handleOptimize(c *fiber.Ctx) error {
+	var message ArrMessage
+	if err := c.BodyParser(&message); err != nil {
+		return err
+	}
+	//Array entrada
+	code := message.Content
+	//evaluando regla1
+	codeR1 := Rule1(code)
+
+	//salida
+	var ConsoleOut = ""
+	for _, item := range codeR1 {
+		ConsoleOut += item
+	}
+	response := Resp{
+		Output:  ConsoleOut,
+		Flag:    true,
+		Message: "<3 Ejecución realizada con éxito <3",
+		ArrCode: nil,
 	}
 	return c.Status(fiber.StatusOK).JSON(response)
 }
@@ -91,6 +174,7 @@ func main() {
 	app := fiber.New()
 	app.Use(cors.New())
 	app.Post("/Interpreter", handleInterpreter)
+	app.Post("/Optimizer", handleOptimize)
 	app.Listen(":3002")
 }
 

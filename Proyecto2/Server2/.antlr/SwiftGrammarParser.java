@@ -128,6 +128,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_s; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterS(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitS(this);
+		}
 	}
 
 	public final SContext s() throws RecognitionException {
@@ -171,6 +179,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_block; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterBlock(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitBlock(this);
+		}
 	}
 
 	public final BlockContext block() throws RecognitionException {
@@ -249,6 +265,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_instruction; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterInstruction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitInstruction(this);
+		}
 	}
 
 	public final InstructionContext instruction() throws RecognitionException {
@@ -338,6 +362,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_structCreation; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterStructCreation(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitStructCreation(this);
+		}
 	}
 
 	public final StructCreationContext structCreation() throws RecognitionException {
@@ -390,6 +422,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_listStructDec; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterListStructDec(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitListStructDec(this);
+		}
 	}
 
 	public final ListStructDecContext listStructDec() throws RecognitionException {
@@ -513,6 +553,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_function; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitFunction(this);
+		}
 	}
 
 	public final FunctionContext function() throws RecognitionException {
@@ -606,6 +654,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_listParamsFunc; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterListParamsFunc(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitListParamsFunc(this);
+		}
 	}
 
 	public final ListParamsFuncContext listParamsFunc() throws RecognitionException {
@@ -710,6 +766,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_assignment; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterAssignment(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitAssignment(this);
+		}
 	}
 
 	public final AssignmentContext assignment() throws RecognitionException {
@@ -753,6 +817,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_printstmt; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterPrintstmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitPrintstmt(this);
+		}
 	}
 
 	public final PrintstmtContext printstmt() throws RecognitionException {
@@ -802,6 +874,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ifstmt; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterIfstmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitIfstmt(this);
+		}
 	}
 
 	public final IfstmtContext ifstmt() throws RecognitionException {
@@ -855,6 +935,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_declarationstmt; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterDeclarationstmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitDeclarationstmt(this);
+		}
 	}
 
 	public final DeclarationstmtContext declarationstmt() throws RecognitionException {
@@ -922,6 +1010,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_types; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterTypes(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitTypes(this);
+		}
 	}
 
 	public final TypesContext types() throws RecognitionException {
@@ -1050,6 +1146,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expr; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitExpr(this);
+		}
 	}
 
 	public final ExprContext expr() throws RecognitionException {
@@ -1357,6 +1461,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_listParams; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterListParams(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitListParams(this);
+		}
 	}
 
 	public final ListParamsContext listParams() throws RecognitionException {
@@ -1444,6 +1556,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_listArray; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterListArray(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitListArray(this);
+		}
 	}
 
 	public final ListArrayContext listArray() throws RecognitionException {
@@ -1541,6 +1661,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_listAccessArray; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterListAccessArray(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitListAccessArray(this);
+		}
 	}
 
 	public final ListAccessArrayContext listAccessArray() throws RecognitionException {
@@ -1631,6 +1759,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_callFunction; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterCallFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitCallFunction(this);
+		}
 	}
 
 	public final CallFunctionContext callFunction() throws RecognitionException {
@@ -1677,6 +1813,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_listParamsCall; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterListParamsCall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitListParamsCall(this);
+		}
 	}
 
 	public final ListParamsCallContext listParamsCall() throws RecognitionException {
@@ -1778,6 +1922,14 @@ public class SwiftGrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_listStructExp; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).enterListStructExp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SwiftGrammarListener ) ((SwiftGrammarListener)listener).exitListStructExp(this);
+		}
 	}
 
 	public final ListStructExpContext listStructExp() throws RecognitionException {
